@@ -318,6 +318,7 @@ export const SnackCalculator = () => {
             Paso 3: Ingrese la fecha del evento
           </Typography>
           <TextField
+            sx={{ width: "10rem" }}
             label="Fecha del evento"
             type="date"
             name="eventDate"
@@ -326,10 +327,6 @@ export const SnackCalculator = () => {
             InputLabelProps={{
               shrink: true,
             }}
-            InputProps={{
-              inputProps: { min: "2023-07-18" },
-            }}
-            style={{ maxWidth: "100%" }}
           />
 
           <Button
