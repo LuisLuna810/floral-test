@@ -3,22 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const snackSlice = createSlice({
     name: 'snack',
-    initialState:{
-        snack:[],
-       
+    initialState: {
+        snack: [],
+
     },
-    
-    reducers:{
-        getAllSnacks: (state, action)=>{
+
+    reducers: {
+        getAllSnacks: (state, action) => {
             state.snack = action.payload
         },
-        
+
     }
 })
 
 export const {
-    getAllSnacks, 
- 
+    getAllSnacks,
+
 } = snackSlice.actions
 
 export default snackSlice.reducer

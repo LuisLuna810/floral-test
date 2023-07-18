@@ -6,7 +6,7 @@ import Footer from '../components/footer';
 
 export const Servicios = () => {
   const servicios = [
-    
+
     {
       titulo: 'Bodas',
       imagen: 'https://cdn.pixabay.com/photo/2017/08/06/20/11/wedding-2595862_1280.jpg',
@@ -46,49 +46,42 @@ export const Servicios = () => {
 
   return (
     <>
-    <Container>
-      <Grid container spacing={2}>
-        {servicios.map((servicio, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <img src={servicio.imagen} alt={servicio.titulo} style={{ width: '100%' }} />
-            <Typography variant="h6" align="center">
-              {servicio.titulo}
-            </Typography>
-            <Typography variant="body1" align="center">
-              {servicio.frase}
-            </Typography>
-          </Grid>
-        ))}
-        
-        <Grid item xs={12} sm={6} md={4} key={88} sx={{display:"flex", justifyItems:"center",alignItems:"center"}}>
-          <Typography sx={{
-            fontSize:"28px"
-          }}>
-            CARRITO DE SNACKS PARA TU EVENTO
+      <Container>
+        <Grid container spacing={2}>
+          {servicios.map((servicio, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <img src={servicio.imagen} alt={servicio.titulo} style={{ width: '100%' }} />
+              <Typography variant="h6" align="center">
+                {servicio.titulo}
+              </Typography>
+              <Typography variant="body1" align="center">
+                {servicio.frase}
+              </Typography>
+            </Grid>
+          ))}
+
+          <Grid item xs={12} sm={6} md={4} key={88} sx={{ display: "flex", justifyItems: "center", alignItems: "center" }}>
             <Typography sx={{
-            fontSize:"18px"
-          }}>
-            Cotiza muy rapido en nuestra seccion de snacks, elegi la cantidad de invitados, los snacks que mas te gusten, la fecha del evento y listo !
-            </Typography>
+              fontSize: "28px"
+            }}>
+              CARRITO DE SNACKS PARA TU EVENTO
+              <Typography sx={{
+                fontSize: "18px"
+              }}>
+                Cotiza muy rapido en nuestra seccion de snacks, elegi la cantidad de invitados, los snacks que mas te gusten, la fecha del evento y listo !
+              </Typography>
             </Typography>
             
-        
+          </Grid>
+          <Grid item xs={12} sm={6} md={4} key={88} sx={{ width: "100%", display: "flex", justifyItems: "center", alignItems: "center" }}>
 
+            <Button href='/snackcart' sx={{
+              background: "green", color: "white"
+            }}>Cotizar Carrito de Snacks</Button>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6} md={4} key={88} sx={{width:"100%", display:"flex", justifyItems:"center",alignItems:"center"}}>
-          
-         <Button href='/snackcart' sx={{
-          background:"green",color:"white"
-         }}>Cotizar Carrito de Snacks</Button>
-
-        </Grid>
-        
-
-        
-      </Grid>
-      
-    </Container>
-    <Footer/>
+      </Container>
+      <Footer />
     </>
   );
 };

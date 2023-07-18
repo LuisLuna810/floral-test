@@ -10,9 +10,9 @@ import Promotions from "../components/promotions";
 
 
 export const Home = () => {
-    return(
-        <>
-        <Container disableGutters maxWidth="xl" sx={{background: "#fff",}}>
+  return (
+    <>
+      <Container disableGutters maxWidth="xl" sx={{ background: "#fff", }}>
         <Stack>
           <UIProvider>
             <Banner />
@@ -26,6 +26,6 @@ export const Home = () => {
           </UIProvider>
         </Stack>
       </Container>
-        </>
-    )
+    </>
+  )
 }

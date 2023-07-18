@@ -38,26 +38,26 @@ export default function AppDrawer() {
       <Drawer open={drawerOpen}>
         <List>
           <ListItemButton>
-          <a style={{textDecoration:"none", color:"white"}} href="/">
-            <ListItemText>Home</ListItemText></a>
+            <a style={{ textDecoration: "none", color: "white" }} href="/">
+              <ListItemText>Home</ListItemText></a>
           </ListItemButton>
           <MiddleDivider />
           <ListItemButton>
-          <a style={{textDecoration:"none", color:"white"}} href="/productos">
-            <ListItemText>Productos</ListItemText></a>
+            <a style={{ textDecoration: "none", color: "white" }} href="/productos">
+              <ListItemText>Productos</ListItemText></a>
           </ListItemButton>
           <MiddleDivider />
-          <a style={{textDecoration:"none", color:"white"}} href="/snackcart">
-          <ListItemButton>
-            <ListItemText>Cotizar Snack</ListItemText>
-          </ListItemButton></a>
+          <a style={{ textDecoration: "none", color: "white" }} href="/snackcart">
+            <ListItemButton>
+              <ListItemText>Cotizar Snack</ListItemText>
+            </ListItemButton></a>
           <MiddleDivider />
-          <a style={{textDecoration:"none", color:"white"}} href="/servicios">
-          <ListItemButton>
-            <ListItemText>Servicios</ListItemText>
-          </ListItemButton></a>
+          <a style={{ textDecoration: "none", color: "white" }} href="/servicios">
+            <ListItemButton>
+              <ListItemText>Servicios</ListItemText>
+            </ListItemButton></a>
           <MiddleDivider />
-          
+
           <MiddleDivider />
         </List>
       </Drawer>

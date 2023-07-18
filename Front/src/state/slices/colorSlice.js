@@ -3,22 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const colorSlice = createSlice({
     name: 'colors',
-    initialState:{
-        colors:[],
-       
+    initialState: {
+        colors: [],
+
     },
-    
-    reducers:{
-        getAllColors: (state, action)=>{
+
+    reducers: {
+        getAllColors: (state, action) => {
             state.colors = action.payload
         },
-        
+
     }
 })
 
 export const {
-  getAllColors, 
- 
+    getAllColors,
+
 } = colorSlice.actions
 
 export default colorSlice.reducer

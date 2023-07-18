@@ -8,11 +8,11 @@ export const userSlice = createSlice({
     favList: [],
     list: {},
     userPost: [],
-    post:{},
-    ranking:0,
-    profile:[],
-    recipesN:[],
-    nutri:{},
+    post: {},
+    ranking: 0,
+    profile: [],
+    recipesN: [],
+    nutri: {},
   },
   reducers: {
     getUser: (state, action) => {
@@ -40,22 +40,22 @@ export const userSlice = createSlice({
     deleteListById: (state, action) => {
       state.favList = action.payload;
     },
-    getUserPosts:(state, action) => {
+    getUserPosts: (state, action) => {
       state.userPost = action.payload;
     },
-    getUserPost:(state, action) => {
+    getUserPost: (state, action) => {
       state.post = action.payload;
     },
-    getRanking:(state, action) => {
+    getRanking: (state, action) => {
       state.ranking = action.payload;
     },
-    getProfile:(state, action) => {
+    getProfile: (state, action) => {
       state.profile = action.payload;
     },
-    getNutriRecipes:(state, action) => {
+    getNutriRecipes: (state, action) => {
       state.recipesN = action.payload;
     },
-    getNutri:(state, action) => {
+    getNutri: (state, action) => {
       state.nutri = action.payload;
     },
     // getUserStatus: (state, action)=>{

@@ -23,11 +23,11 @@ const SearchField = styled(TextField)(({ theme }) => ({
   ".MuiInputLabel-root": {
     color: Colors.secondary,
   },
-    ".MuiInput-root": {
-        fontSize: '1rem',
-        [theme.breakpoints.up('md')]: {
-            fontSize: '2rem',
-        },
+  ".MuiInput-root": {
+    fontSize: '1rem',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2rem',
+    },
     color: Colors.secondary,
   },
   ".MuiInput-root::before": {
@@ -37,7 +37,7 @@ const SearchField = styled(TextField)(({ theme }) => ({
 }));
 
 export default function SearchBox() {
-    const { showSearchBox, setShowSearchBox } = useUIContext();
+  const { showSearchBox, setShowSearchBox } = useUIContext();
 
   return (
     <Slide direction="down" in={showSearchBox} timeout={500}>
@@ -49,10 +49,10 @@ export default function SearchBox() {
           placeholder="search..."
         />
         <IconButton>
-                  <SearchIcon sx={{ fontSize: { xs: '2rem', md: "3rem" } }} color="secondary" />
+          <SearchIcon sx={{ fontSize: { xs: '2rem', md: "3rem" } }} color="secondary" />
         </IconButton>
-              <IconButton
-                  onClick={() => setShowSearchBox(false) }
+        <IconButton
+          onClick={() => setShowSearchBox(false)}
           sx={{
             position: "absolute",
             top: 10,

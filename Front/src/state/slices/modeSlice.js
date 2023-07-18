@@ -8,12 +8,12 @@ export const modeSlice = createSlice({
   },
   reducers: {
     setMode: (state) => {
-      state.mode = state.mode === 'dark' ? 'light' : 'dark'; 
+      state.mode = state.mode === 'dark' ? 'light' : 'dark';
     },
   }
 })
 
-export const { 
+export const {
   setMode
 } = modeSlice.actions
 

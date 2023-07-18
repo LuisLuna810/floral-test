@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import { Box, Button, MenuItem, Select, TextField , Typography} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Button, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import moment from "moment-timezone";
@@ -10,7 +10,7 @@ import { addProduct, removeProduct } from "../state/slices/CartSlice";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 
-export const FormFinal = ({decodedToken}) => {
+export const FormFinal = ({ decodedToken }) => {
   const dispatch = useDispatch()
   const cart = useSelector(state => state.cart)
   const [cartItems, setCartItems] = useState(cart);
@@ -20,23 +20,20 @@ export const FormFinal = ({decodedToken}) => {
 
   useEffect(() => {
     // Aquí puedes establecer el valor del userId
-   
-   const fetchUserCompras = async () => {
-     try {
-       const response = await fetch(`${apiUrl}/user/totalcompras?id=${decodedToken?.id?decodedToken.id:"-"}`);
-       const data = await response.json();
-       setUserCompras(data);
-       
-     } catch (error) {
-       console.log(error);
-     }
-   };
- 
-   fetchUserCompras();
- }, []);
 
-  console.log(cart, "SOY CART")
-  console.log(userCompras, "SOY USERCOMPRAS")
+    const fetchUserCompras = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/user/totalcompras?id=${decodedToken?.id ? decodedToken.id : "-"}`);
+        const data = await response.json();
+        setUserCompras(data);
+
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserCompras();
+  }, []);
 
   const pickupTimeOptions = generatePickupTimeOptions();
 
@@ -49,45 +46,40 @@ export const FormFinal = ({decodedToken}) => {
     pickupTime: "",
   };
 
-  console.log(decodedToken, "SOY DECODED PAPU")
-
-  
   const validationSchema = Yup.object().shape({
     senderName: Yup.string().required("Campo requerido"),
     receiverName: Yup.string().required("Campo requerido"),
     cellphone: Yup.number().required("Campo requerido").typeError("Debe ser un numero"),
     deliveryType: Yup.string().required("Campo requerido"),
-    
-    
+
+
   });
 
 
-  const InvitadoId= "48ad6fdc-a31a-49a3-aca1-b157755d745e"
+  const InvitadoId = "48ad6fdc-a31a-49a3-aca1-b157755d745e"
 
   const onSubmit = (values) => {
-    console.log(values)
-    if (values.deliveryType === "address"  && !values.address) {
-        
+    if (values.deliveryType === "address" && !values.address) {
+
       alert("Por favor, completa una direccion para hacer el envio.");
-    } 
-    if (values.deliveryType === "pickupTime"  && !values.pickupTime) {
-        alert("Por favor, selecciona un horario para recoger tu compra.");
-      } 
+    }
+    if (values.deliveryType === "pickupTime" && !values.pickupTime) {
+      alert("Por favor, selecciona un horario para recoger tu compra.");
+    }
     else {
       const payload = {
-        cart:cart, 
-        senderName:values.senderName,
+        cart: cart,
+        senderName: values.senderName,
         receiverName: values.receiverName,
         pickupTime: values.pickupTime,
         deliveryType: values.deliveryType,
         cellphone: values.cellphone,
         address: values.address,
-        userId: decodedToken?.id?decodedToken.id:InvitadoId,
-        username: decodedToken?.username?decodedToken.username:"INVITADO",
-        totalCompras: userCompras?userCompras:0 // Le envio el total de compras al creador de link de mercadopago para saber si aplicar descuento o no, ya que en el 5 compra se hace descuento
+        userId: decodedToken?.id ? decodedToken.id : InvitadoId,
+        username: decodedToken?.username ? decodedToken.username : "INVITADO",
+        totalCompras: userCompras ? userCompras : 0 // Le envio el total de compras al creador de link de mercadopago para saber si aplicar descuento o no, ya que en el 5 compra se hace descuento
       }
       dispatch(Pagar(payload))
-      console.log(values, "wachin soy values");
     }
   };
 
@@ -95,7 +87,7 @@ export const FormFinal = ({decodedToken}) => {
   const handleDeliveryTypeChange = (event) => {
     const selectedDeliveryType = event.target.value;
     formik.setFieldValue("deliveryType", selectedDeliveryType);
-  
+
     if (selectedDeliveryType === "address") {
       handleAddEnvio()
       setPriceTotal(80)
@@ -128,14 +120,15 @@ export const FormFinal = ({decodedToken}) => {
   });
 
   const handleAddEnvio = () => {
-    const priceEnvio = 
-    { id:"4c8d59f7-2c46-4c4f-bd86-329cdde5857e", 
-      name:"Envio a domicilio", 
-      image:imageEnvio ,
-      price:80,
-      color:"--", 
-      ColorName:"--",
-      quantity:1
+    const priceEnvio =
+    {
+      id: "4c8d59f7-2c46-4c4f-bd86-329cdde5857e",
+      name: "Envio a domicilio",
+      image: imageEnvio,
+      price: 80,
+      color: "--",
+      ColorName: "--",
+      quantity: 1
 
     };
     dispatch(addProduct(priceEnvio));
@@ -144,20 +137,20 @@ export const FormFinal = ({decodedToken}) => {
   const handleDeleteEnvio = () => {
     const productId = "4c8d59f7-2c46-4c4f-bd86-329cdde5857e"
     const color = "--"
-    dispatch(removeProduct({productId,color}));
+    dispatch(removeProduct({ productId, color }));
   };
 
 
   const calculateTotal = () => {
     let total = cartItems.reduce((total, item) => total + item.price * item.quantity, 0); // suma de todo + envio si es que tiene
     const contieneEnvio = cartItems.some(producto => producto.id === "4c8d59f7-2c46-4c4f-bd86-329cdde5857e");
-    let total2 = contieneEnvio ? total : total + priceTotal 
-    
-    return total2 ;
+    let total2 = contieneEnvio ? total : total + priceTotal
+
+    return total2;
   };
   return (
     <Box sx={{ maxWidth: 600, margin: "auto", padding: 2 }}>
-       <Typography sx={{fontSize:"38px"}}>Completa tus datos para recibir tu producto</Typography>
+      <Typography sx={{ fontSize: "38px" }}>Completa tus datos para recibir tu producto</Typography>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           id="senderName"
@@ -182,38 +175,38 @@ export const FormFinal = ({decodedToken}) => {
           fullWidth
           margin="normal"
         />
-        <Typography sx={{fontWeight:"600"}}>Tipo de entrega</Typography>
-        
+        <Typography sx={{ fontWeight: "600" }}>Tipo de entrega</Typography>
+
         <Select
-  id="deliveryType"
-  name="deliveryType"
-  label="Tipo de entrega"
-  value={formik.values.deliveryType}
-  onChange={handleDeliveryTypeChange} // Cambio en el evento onChange
-  fullWidth
-  margin="normal"
-  error={formik.touched.deliveryType && Boolean(formik.errors.deliveryType)}
-  helperText={formik.touched.deliveryType && formik.errors.deliveryType}
->
-  <MenuItem value="">Seleccionar</MenuItem>
-  <MenuItem value="address">Domicilio</MenuItem>
-  <MenuItem value="pickupTime">Pasar a recoger</MenuItem>
-</Select>
+          id="deliveryType"
+          name="deliveryType"
+          label="Tipo de entrega"
+          value={formik.values.deliveryType}
+          onChange={handleDeliveryTypeChange} // Cambio en el evento onChange
+          fullWidth
+          margin="normal"
+          error={formik.touched.deliveryType && Boolean(formik.errors.deliveryType)}
+          helperText={formik.touched.deliveryType && formik.errors.deliveryType}
+        >
+          <MenuItem value="">Seleccionar</MenuItem>
+          <MenuItem value="address">Domicilio</MenuItem>
+          <MenuItem value="pickupTime">Pasar a recoger</MenuItem>
+        </Select>
 
         {formik.values.deliveryType === "address" && (
-            <>
-          <TextField
-            id="address"
-            name="address"
-            label="Dirección"
-            value={formik.values.address}
-            onChange={formik.handleChange}
-            fullWidth
-            margin="normal"
-            
-          />
-          <Typography sx={{fontWeight:"600", fontSize:"12px"}}>+80$ envio a domicilio</Typography>
-          
+          <>
+            <TextField
+              id="address"
+              name="address"
+              label="Dirección"
+              value={formik.values.address}
+              onChange={formik.handleChange}
+              fullWidth
+              margin="normal"
+
+            />
+            <Typography sx={{ fontWeight: "600", fontSize: "12px" }}>+80$ envio a domicilio</Typography>
+
           </>
         )}
 
@@ -246,29 +239,29 @@ export const FormFinal = ({decodedToken}) => {
           error={formik.touched.cellphone && Boolean(formik.errors.cellphone)}
           helperText={formik.touched.cellphone && formik.errors.cellphone}
         />
-        <Box sx={{display:"flex",justifyContent:"flex-end"}}>
-        <Box sx={{display:"flex",justifyContent:"flex-end", margin:"8px", flexDirection:"column"}}>
-        <Typography sx={{fontWeight:400}}>Total a pagar  <span style={{fontWeight:600}}>${calculateTotal().toFixed(2)}</span></Typography>
-         
-          {userCompras && userCompras === 5? 
-          (<>
-            <Typography sx={{color:"green", textAlign:"end"}}><span style={{color:"red"}}>- ${calculateTotal().toFixed(2) * 0.4} </span> </Typography>
-          <Typography sx={{color:"green"}}>¡Esta es tu 5ta compra </Typography>
-              <Typography sx={{color:"green"}}>40% de descuento!</Typography>
-          </>):
-          
-          (<></>)}
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Box sx={{ display: "flex", justifyContent: "flex-end", margin: "8px", flexDirection: "column" }}>
+            <Typography sx={{ fontWeight: 400 }}>Total a pagar  <span style={{ fontWeight: 600 }}>${calculateTotal().toFixed(2)}</span></Typography>
 
-      </Box></Box>
-        <Button sx={{background:"green", fontSize:"18px", maxWidth:"800px", width:"100%", marginBottom:"36px"}} type="submit" variant="contained" color="primary">
+            {userCompras && userCompras === 5 ?
+              (<>
+                <Typography sx={{ color: "green", textAlign: "end" }}><span style={{ color: "red" }}>- ${calculateTotal().toFixed(2) * 0.4} </span> </Typography>
+                <Typography sx={{ color: "green" }}>¡Esta es tu 5ta compra </Typography>
+                <Typography sx={{ color: "green" }}>40% de descuento!</Typography>
+              </>) :
+
+              (<></>)}
+
+          </Box></Box>
+        <Button sx={{ background: "green", fontSize: "18px", maxWidth: "800px", width: "100%", marginBottom: "36px" }} type="submit" variant="contained" color="primary">
           PAGAR
         </Button>
         <img
-    src="https://imgmp.mlstatic.com/org-img/banners/mx/medios/MLM_575X40_new.jpg"
-    title="Mercado Pago - Medios de pago"
-    alt="Mercado Pago - Medios de pago"
-    style={{ maxWidth: "100%", height: "auto" }}
-/>
+          src="https://imgmp.mlstatic.com/org-img/banners/mx/medios/MLM_575X40_new.jpg"
+          title="Mercado Pago - Medios de pago"
+          alt="Mercado Pago - Medios de pago"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
       </form>
     </Box>
   );

@@ -4,8 +4,8 @@ import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 const PriceSelect = ({ product, selectedPrice, setSelectedPrice, handlePriceChange }) => {
   return (
     <FormControl fullWidth>
-      <InputLabel sx={{ color: 'Black', fontWeight:"500", textAlign:"center", display:"flex", marginLeft:"50%" }} id="price-select-label">
-        
+      <InputLabel sx={{ color: 'Black', fontWeight: "500", textAlign: "center", display: "flex", marginLeft: "50%" }} id="price-select-label">
+
       </InputLabel>
       <Select
         labelId="price-select-label"
@@ -17,9 +17,9 @@ const PriceSelect = ({ product, selectedPrice, setSelectedPrice, handlePriceChan
           '& .MuiOutlinedInput-notchedOutline': {
             border: 'none',
           },
-          width:"100%",
-          maxWidth:"120px",
-          minWidth:"120px"
+          width: "100%",
+          maxWidth: "120px",
+          minWidth: "120px"
         }}
       >
         {product?.prices?.map((price) => (

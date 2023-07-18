@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
 import {
-  
+
   Product,
   ProductActionButton,
   ProductActionsWrapper,
   ProductAddToCart,
   ProductFavButton,
   ProductImage,
-  
+
 } from "../../styles/product";
 import { Stack, Tooltip, Typography } from "@mui/material";
 // import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -36,26 +36,28 @@ export default function SingleProduct({ product, matches }) {
     setShowOptions(false);
   };
 
-const [selectedColor, setSelectedColor] = useState(null);
-const [selectedPrice, setSelectedPrice] = useState(product?.prices?.[0]);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedPrice, setSelectedPrice] = useState(product?.prices?.[0]);
 
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
     const { id, name, image } = product;
     const quantity = 1; // O la cantidad deseada
-    
-    const productData = 
-    { id,
-      name:name +(selectedPrice.size?" "+selectedPrice.size:"") , // si tiene tamaño, se le agrega al nombre
-      image,size:selectedPrice.size, 
-      price:selectedPrice.price, 
-      quantityPrice: selectedPrice.quantity, 
-      quantity , 
-      color:selectedColor.CodigoColor, 
-      ColorName:  selectedColor.ColorName};
+
+    const productData =
+    {
+      id,
+      name: name + (selectedPrice.size ? " " + selectedPrice.size : ""), // si tiene tamaño, se le agrega al nombre
+      image, size: selectedPrice.size,
+      price: selectedPrice.price,
+      quantityPrice: selectedPrice.quantity,
+      quantity,
+      color: selectedColor.CodigoColor,
+      ColorName: selectedColor.ColorName
+    };
     dispatch(addProduct(productData));
-    
+
   };
 
   const handleColorChange = (event) => {
@@ -82,19 +84,19 @@ const [selectedPrice, setSelectedPrice] = useState(product?.prices?.[0]);
         <ProductMeta product={product} matches={matches} selectedPrice={selectedPrice} />
         <ProductActionsWrapper>
 
-        <Box sx={{display:"flex", justifyContent:"flex-end"}}>
-        
-        {product?.prices?.[0]?.size?
-        
-        <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
-        :
-        <></>
-        }
-        </Box>
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
 
-        <Stack direction={matches ? "row" : "column"}>
+            {product?.prices?.[0]?.size ?
+
+              <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
+              :
+              <></>
+            }
+          </Box>
+
+          <Stack direction={matches ? "row" : "column"}>
             <ProductFavButton isfav={0}>
-              <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange}/>
+              <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
             </ProductFavButton>
             {/* <ProductActionButton>
               <Tooltip placement="left" title="share this product">
@@ -110,7 +112,7 @@ const [selectedPrice, setSelectedPrice] = useState(product?.prices?.[0]);
         </ProductActionsWrapper>
       </Product>
       <ProductAddToCart onClick={handleAddToCart} variant="contained">Add to cart</ProductAddToCart>
-      <ProductDetailDialog product={product} selectedPrice={selectedPrice}  setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange}/>
+      <ProductDetailDialog product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
     </>
   );
 }

@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 
 import { Formik } from 'formik';
 import * as Yup from "yup";
-import { 
+import {
   Avatar,
   Button,
   CssBaseline,
   TextField,
   FormControlLabel,
   Checkbox,
- 
+
   Paper,
   Box,
   Grid,
@@ -38,9 +38,9 @@ import imageLogin from "../assets/12.png"
 function Copyright(props) {
 
   const dispatch = useDispatch()
-  
-  
-  
+
+
+
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
@@ -56,16 +56,16 @@ function Copyright(props) {
 
 const initialValuesLogin = {
   username: '',
-    email: '',
-    password: '',
+  email: '',
+  password: '',
 }
 
 
 const loginSchema = Yup.object().shape({
-  username : Yup.string().required('Complete este campo'),
-  email : Yup.string().email('mail inválido').required('Debes colocar un email'),
+  username: Yup.string().required('Complete este campo'),
+  email: Yup.string().email('mail inválido').required('Debes colocar un email'),
   password: Yup.string().required('Complete este campo').matches(
-    /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{8,}$/, 
+    /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_]).{8,}$/,
     'La contraseña debe tener mínimo 8 caracteres, 1 número y un simbolo.'
   )
 })
@@ -79,83 +79,62 @@ export function RegisterForm() {
   const loginbackground = theme.palette.background.login
   const logininput = theme.palette.background.logininput
   const navigate = useNavigate();
- 
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
-
-  const dispatch =useDispatch()
+  const dispatch = useDispatch()
 
   const handleFormSubmit = (values) => {
     const data = new FormData();
-    for(let value in values){
+    for (let value in values) {
       data.append(value, values[value])
     }
-    let aregistrar= {
+    let aregistrar = {
       email: data.get('email'),
       password: data.get('password'),
-      username:data.get('username')
+      username: data.get('username')
     }
 
     dispatch(register(aregistrar))
-    
+
   };
-console.log("soy el color" , loginFont)
   return (
     <div>
-      
-    <Grid container component="main" sx={{   alignItems:"center", background:loginbackground}}>
-      
-      <Grid
-        item
-        md={7}
-        sx={{
-          display:{xs:"none", md:"flex", sm:"none"},
-          justifyContent:"center",
-          
-        }}
-        
-      >
-        <Grid sx={{display:"flex", maxWidth:"568px", marginBottom:"100px", maxHeight:"497px", justifyContent:"center", display:"flex"}}>
-        <Box minWidth={"400px"} maxWidth={"400px"}>
-        <img style={{maxWidth:"400px", minWidth:"400px"}} src={imageLogin}></img>
-        </Box>
-  </Grid>
-      </Grid>
-
-
-      <Grid item xs={12} sm={12} md={5}  elevation={6} square sx={{justifyContent:"center", display:"flex"}}>
-        <Box
+      <Grid container component="main" sx={{ alignItems: "center", background: loginbackground }}>
+        <Grid
+          item
+          md={7}
           sx={{
-            my: 8,
-            mx: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            
-            maxWidth:"400px",
-            maxHeight:"497px"
-            
-            
+            display: { xs: "none", md: "flex", sm: "none" },
+            justifyContent: "center",
+
           }}
         >
-          
-          
-          <Typography component="h1" variant="h5" sx={{fontSize:"30px", fontWeight:"600", color:loginFont, marginBottom:"18px"}}>
-          Crear cuenta Todo Floral
-          </Typography>
-          <Typography component="h1" variant="h5" sx={{fontSize:"14px", fontWeight:"400", color:loginFont, lineHeight:"20px", marginBottom:"18px"}}>
-          ¿Ya tienes cuenta? <Link to="/login" style={{textDecoration: 'underline', color: '#00D5FA'}}>
-            Inicia sesión.</Link > 
-            Tomara solo unos segundos
-          </Typography>
-          <Box  sx={{ mt: 1 }}>
-          <Formik 
+          <Grid sx={{ display: "flex", maxWidth: "568px", marginBottom: "100px", maxHeight: "497px", justifyContent: "center", display: "flex" }}>
+            <Box minWidth={"400px"} maxWidth={"400px"}>
+              <img style={{ maxWidth: "400px", minWidth: "400px" }} src={imageLogin}></img>
+            </Box>
+          </Grid>
+        </Grid>
+        <Grid item xs={12} sm={12} md={5} elevation={6} square sx={{ justifyContent: "center", display: "flex" }}>
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              maxWidth: "400px",
+              maxHeight: "497px"
+            }}
+          >
+            <Typography component="h1" variant="h5" sx={{ fontSize: "30px", fontWeight: "600", color: loginFont, marginBottom: "18px" }}>
+              Crear cuenta Todo Floral
+            </Typography>
+            <Typography component="h1" variant="h5" sx={{ fontSize: "14px", fontWeight: "400", color: loginFont, lineHeight: "20px", marginBottom: "18px" }}>
+              ¿Ya tienes cuenta? <Link to="/login" style={{ textDecoration: 'underline', color: '#00D5FA' }}>
+                Inicia sesión.</Link >
+              Tomara solo unos segundos
+            </Typography>
+            <Box sx={{ mt: 1 }}>
+              <Formik
                 onSubmit={handleFormSubmit}
                 initialValues={initialValuesLogin}
                 validationSchema={loginSchema}
@@ -169,14 +148,14 @@ console.log("soy el color" , loginFont)
                   handleSubmit,
                   setFieldValue,
                   resetForm
-                }) =>  (
+                }) => (
                   <Box component='form' onSubmit={handleSubmit}>
-                    <Typography sx={{fontWeight:"500", fontSize:"14px", color:loginFont, marginBottom:"2px"}}>
+                    <Typography sx={{ fontWeight: "500", fontSize: "14px", color: loginFont, marginBottom: "2px" }}>
                       Nombre y apellido
                     </Typography>
                     <TextField
-                      sx={{marginBottom:"27px", background:logininput}}
-                      
+                      sx={{ marginBottom: "27px", background: logininput }}
+
                       required
                       fullWidth
                       id="username"
@@ -191,12 +170,12 @@ console.log("soy el color" , loginFont)
                       }
                       helperText={touched.username && errors.username}
                     />
-                    <Typography sx={{fontWeight:"500", fontSize:"14px", color:loginFont, marginBottom:"2px"}}>
+                    <Typography sx={{ fontWeight: "500", fontSize: "14px", color: loginFont, marginBottom: "2px" }}>
                       Email
                     </Typography>
                     <TextField
-                      sx={{marginBottom:"27px", background:logininput}}
-                      
+                      sx={{ marginBottom: "27px", background: logininput }}
+
                       required
                       fullWidth
                       id="email"
@@ -211,16 +190,16 @@ console.log("soy el color" , loginFont)
                       }
                       helperText={touched.email && errors.email}
                     />
-                    <Typography sx={{fontWeight:"500", fontSize:"14px", color:loginFont, marginBottom:"2px"}}>
+                    <Typography sx={{ fontWeight: "500", fontSize: "14px", color: loginFont, marginBottom: "2px" }}>
                       Contraseña
                     </Typography>
                     <TextField
-                      sx={{marginBottom:"22px", background:logininput}}
+                      sx={{ marginBottom: "22px", background: logininput }}
                       required
                       fullWidth
                       name="password"
                       label="Ingresa tu contraseña"
-                      
+
                       type="password"
                       id="password"
                       onBlur={handleBlur}
@@ -236,34 +215,24 @@ console.log("soy el color" , loginFont)
                       control={<Checkbox value="remember" color="primary" />}
                       label="Recuerdame"
                     /> */}
-                    
+
                     <Button
                       type="submit"
                       fullWidth
                       variant='outlined'
-                      
-
-                      sx={{color:loginFont, fontSize:"12px", fontWeight:"600", marginTop:"8px", marginBottom:"24px", background:logininput, textTransform: "none"}}
-                      
-                      
+                      sx={{ color: loginFont, fontSize: "12px", fontWeight: "600", marginTop: "8px", marginBottom: "24px", background: logininput, textTransform: "none" }}
                     >
                       Crear cuenta
                     </Button>
-        {/*                           google auth  */                                               }
-
-                    
-              
-                    
+                    {/*                           google auth  */}
                     <Copyright sx={{ mt: 5 }} />
                   </Box>
                 )}
               </Formik>
+            </Box>
           </Box>
-        </Box>
+        </Grid>
       </Grid>
-    </Grid>
     </div>
   );
 }
-
-

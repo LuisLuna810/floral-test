@@ -9,13 +9,13 @@ export const contadorSlice = createSlice({
     getContador: (state, action) => {
       state.contador = action.payload;
     },
-   
+
   },
 });
 
 export const {
   getContador,
-  
+
 } = contadorSlice.actions;
 
 export default contadorSlice.reducer;

@@ -4,16 +4,16 @@ import { combineReducers } from 'redux';
 import storage from 'redux-persist/lib/storage';
 
 
- import recipes from '../state/slices/recipeSlice';
- import user from '../state/slices/userSlice';
- import mode from '../state/slices/modeSlice';
- import contador from './slices/contadorSlice';
- import categories from './slices/categories';
- import colors from './slices/colorSlice';
- import products from './slices/productSlice';
- import cartReducer from './slices/CartSlice';
- import orden from './slices/OrdenSlice';
- import snack from './slices/SnackSlice';
+import recipes from '../state/slices/recipeSlice';
+import user from '../state/slices/userSlice';
+import mode from '../state/slices/modeSlice';
+import contador from './slices/contadorSlice';
+import categories from './slices/categories';
+import colors from './slices/colorSlice';
+import products from './slices/productSlice';
+import cartReducer from './slices/CartSlice';
+import orden from './slices/OrdenSlice';
+import snack from './slices/SnackSlice';
 
 
 
@@ -24,14 +24,14 @@ const rootReducer = combineReducers({
   mode: mode,
   recipes: recipes,
   user: user,
-  contador:contador,
-  categories:categories,
-  colors:colors,
-  products:products,
+  contador: contador,
+  categories: categories,
+  colors: colors,
+  products: products,
   cart: cartReducer,
-  orden:orden,
-  snack:snack,
-  
+  orden: orden,
+  snack: snack,
+
 });
 
 const localStorageConfig = {
@@ -47,11 +47,11 @@ const sessionConfig = {
 };
 
 
- const localStorageReducer = persistReducer(localStorageConfig, combineReducers({
+const localStorageReducer = persistReducer(localStorageConfig, combineReducers({
   mode: mode,
   recipes: recipes,
-  
-  
+
+
 }));
 
 

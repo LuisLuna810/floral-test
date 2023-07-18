@@ -13,7 +13,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { Colors } from "../../styles/theme";
 import styled from "@emotion/styled";
-import {  Product, ProductImage } from "../../styles/product";
+import { Product, ProductImage } from "../../styles/product";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 
@@ -46,27 +46,29 @@ const ProductDetailInfoWrapper = styled(Box)(() => ({
   lineHeight: 0,
 }));
 
-export default function ProductDetail({ open, onClose, product, selectedPrice,setSelectedPrice,handlePriceChange,selectedColor,setSelectedColor,handleColorChange }) {
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down("md"));
-    const dispatch = useDispatch()
+export default function ProductDetail({ open, onClose, product, selectedPrice, setSelectedPrice, handlePriceChange, selectedColor, setSelectedColor, handleColorChange }) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const dispatch = useDispatch()
 
-    const handleAddToCart = () => {
-      const { id, name, image } = product;
-      const quantity = 1; // O la cantidad deseada
-      
-      const productData = 
-      { id,
-        name:name +(selectedPrice.size?" "+selectedPrice.size:"") , // si tiene tamaño, se le agrega al nombre
-        image,size:selectedPrice.size, 
-        price:selectedPrice.price, 
-        quantityPrice: selectedPrice.quantity, 
-        quantity , 
-        color:selectedColor.CodigoColor, 
-        ColorName:  selectedColor.ColorName};
-      dispatch(addProduct(productData));
-      
+  const handleAddToCart = () => {
+    const { id, name, image } = product;
+    const quantity = 1; // O la cantidad deseada
+
+    const productData =
+    {
+      id,
+      name: name + (selectedPrice.size ? " " + selectedPrice.size : ""), // si tiene tamaño, se le agrega al nombre
+      image, size: selectedPrice.size,
+      price: selectedPrice.price,
+      quantityPrice: selectedPrice.quantity,
+      quantity,
+      color: selectedColor.CodigoColor,
+      ColorName: selectedColor.ColorName
     };
+    dispatch(addProduct(productData));
+
+  };
 
 
 
@@ -103,24 +105,24 @@ export default function ProductDetail({ open, onClose, product, selectedPrice,se
             <ProductImage src={product.image} />
           </Product>
           <ProductDetailInfoWrapper>
-          
+
             <Typography sx={{ lineHeight: 2 }} variant="h4">
               {product.name}
             </Typography>
             <Typography>
               {product.description}
-              
+
             </Typography>
             <Typography>Color</Typography>
-            <Box sx={{display:"flex", maxWidth:"75px"}}>
-            
-            
-            <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange}/>
+            <Box sx={{ display: "flex", maxWidth: "75px" }}>
+
+
+              <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
             </Box>
             <Typography>Detallex:</Typography>
-            <Box sx={{display:"flex", maxWidth:"75px"}}>
-              
-            <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
+            <Box sx={{ display: "flex", maxWidth: "75px" }}>
+
+              <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
             </Box>
             <Box
               sx={{ mt: 4 }}
@@ -129,17 +131,17 @@ export default function ProductDetail({ open, onClose, product, selectedPrice,se
               justifyContent="space-between"
             >
               {/* <IncDec /> */}
-              
+
               <Button variant="contained" onClick={handleAddToCart}>Add to Cart</Button>
             </Box>
-            
+
             <Box
               sx={{
                 mt: 4,
                 color: Colors.dove_gray,
               }}
             >
-              
+
             </Box>
           </ProductDetailInfoWrapper>
         </ProductDetailWrapper>

@@ -76,7 +76,6 @@ export const changeEmailConfirm = (id) => async (dispatch) => {
     await dispatch(getUsers());
     //dispatch(getUser(res.data))
     swal("", "Usuario modificado correctamente!", "success");
-    console.log(res);
   } catch (e) {
     console.log(e);
   }
@@ -100,7 +99,6 @@ export const banear = (id) => async (dispatch) => {
     await dispatch(getUsers());
     //dispatch(getUser(res.data))
     swal("", "Usuario eliminado correctamente!", "success");
-    console.log(res);
   } catch (e) {
     console.log(e);
   }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import {
   Box,
   Button,
@@ -29,19 +29,17 @@ export default function Products() {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
 
-  const { products } = useSelector((state)=>state.products)
-
-  console.log(products, "xd")
+  const { products } = useSelector((state) => state.products)
   const categories = [
     { id: 1, name: "Flores" },
     { id: 2, name: "Rosas" },
     { id: 3, name: "Girasoles" },
-    
+
   ];
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getAllProduct())
-  },[])
+  }, [])
 
   const filterProducts = () => {
     //let filtered = products?.products?products.products:[]
@@ -132,34 +130,34 @@ export default function Products() {
 
   return (
     <Container>
-      <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between"  }}>
-      <Box sx={{ marginBottom: "16px", width:"70%" }}>
-        <TextField
-          label="Buscar producto"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          sx={{ width: "100%" }}
-        />
-      </Box>
-      <Box sx={{ marginBottom: "16px", display:"flex", flexWrap:"wrap"}}>
-        <FormControl sx={{ marginRight: "16px", width:"120px" }}>
-          <InputLabel id="category-label">Categoría:</InputLabel>
-          <Select
-            labelId="category-label"
-            id="category"
-            value={selectedCategory}
-            onChange={handleCategoryChange}
-          >
-            <MenuItem value="">Todos</MenuItem>
-            {categories.map((category) => (
-              <MenuItem key={category.id} value={category.name}>
-                {category.name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+      <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+        <Box sx={{ marginBottom: "16px", width: "70%" }}>
+          <TextField
+            label="Buscar producto"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            sx={{ width: "100%" }}
+          />
+        </Box>
+        <Box sx={{ marginBottom: "16px", display: "flex", flexWrap: "wrap" }}>
+          <FormControl sx={{ marginRight: "16px", width: "120px" }}>
+            <InputLabel id="category-label">Categoría:</InputLabel>
+            <Select
+              labelId="category-label"
+              id="category"
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+            >
+              <MenuItem value="">Todos</MenuItem>
+              {categories.map((category) => (
+                <MenuItem key={category.id} value={category.name}>
+                  {category.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
 
-        {/* <FormControl sx={{width:"90px"}}>
+          {/* <FormControl sx={{width:"90px"}}>
           <InputLabel id="price-label" >Precio:</InputLabel>
           <Select
             labelId="price-label"
@@ -172,15 +170,15 @@ export default function Products() {
             <MenuItem value="mayor">Mayor</MenuItem>
           </Select>
         </FormControl> */}
-      </Box>
+        </Box>
 
-      
-    </Box>
+
+      </Box>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
         justifyContent="center"
-        sx={{ margin: `20px 4px 10px 4px`, minHeight:"600px" }}
+        sx={{ margin: `20px 4px 10px 4px`, minHeight: "600px" }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {renderProducts()}

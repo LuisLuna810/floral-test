@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   TextField,
   Button,
@@ -54,7 +54,6 @@ export const SnackCalculator = () => {
   });
 
   const { snack } = useSelector((state) => state.snack);
-  console.log(snack.snacks, "snack");
 
   useEffect(() => {
     dispatch(getSnacks());
@@ -72,7 +71,6 @@ export const SnackCalculator = () => {
       guests +
       " Fecha:" +
       eventDate;
-    console.log(snacksName);
 
     const price = total;
     const quantity = 1;
@@ -81,8 +79,6 @@ export const SnackCalculator = () => {
 
     const productData = { id, name, price, image, quantity };
     dispatch(addProduct(productData));
-    console.log("listo");
-    console.log(name);
     window.location.href = "/cart";
   };
 
