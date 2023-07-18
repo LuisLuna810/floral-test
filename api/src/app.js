@@ -35,4 +35,8 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(status).send(message);
 });
 
+server.listen(5001, () => {
+  console.log(`Servidor corriendo en el puerto 5001`);
+});
+
 module.exports = server;

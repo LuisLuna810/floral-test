@@ -122,11 +122,11 @@ const createProduct = async (req, res) => {
 
   const createSnack = async (req, res) => {
     try {
-      const { name, price, image } = req.body;
-      if (!name || !price || !image) {
+      const { name, price, image, description } = req.body;
+      if (!name || !price || !image || !description) {
         return res.status(400).json({ message: 'Completa todos los campos.' });
       }
-      const cat = await Snack.create({name, price, image});
+      const cat = await Snack.create({name, price, image, description});
       res.status(201).json({ message: '¡Snack creado correctamente!' });
     } catch (error) {
       console.error(error);

@@ -265,7 +265,7 @@ export const SnackCalculator = () => {
                           onChange={handleSnackChange}
                         />
                       }
-                      label={`${snack.name} - $${snack.price}`}
+                      label={`Nombre: ${snack.name} Descripción: ${snack.description} Precio: $${snack.price}`}
                     />
                   </Item>
                 </Grid>
