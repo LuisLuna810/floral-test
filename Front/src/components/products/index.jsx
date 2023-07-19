@@ -147,15 +147,16 @@ export default function Products() {
           />
         </Box>
         <Box sx={{ marginBottom: "16px", display: "flex", flexWrap: "wrap" }}>
-          <FormControl sx={{ marginRight: "16px", width: "120px" }}>
-            <InputLabel id="category-label">Categoría:</InputLabel>
+          <FormControl sx={{ marginRight: "16px", width: "10rem"}} >
+            <InputLabel>Categorías</InputLabel>
             <Select
               labelId="category-label"
               id="category"
               value={selectedCategory}
               onChange={handleCategoryChange}
+              displayEmpty
+              label="Categorias"
             >
-              <MenuItem value="">Todos</MenuItem>
               {categories.map((category) => (
                 <MenuItem key={category.id} value={category.name}>
                   {category.name}
