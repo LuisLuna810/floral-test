@@ -78,7 +78,7 @@ export default function SingleProductDesktop({ product, matches }) {
   };
   return (
     <>
-      <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => showProductDetailDialog()}>
 
         <Box sx={{ maxWidth: "300px", maxHeight: "300px", minWidth: "300px", minHeight: "300px" }}>
           <ProductImage src={product.image} />
@@ -90,12 +90,6 @@ export default function SingleProductDesktop({ product, matches }) {
         )}
         <ProductActionsWrapper show={showOptions || matches}>
           <Stack direction={matches ? "row" : "column"}>
-
-            <ProductActionButton onClick={() => showProductDetailDialog()}>
-              <Tooltip placement="left" title="Full view">
-                <FitScreenIcon color="primary" />
-              </Tooltip>
-            </ProductActionButton>
           </Stack>
         </ProductActionsWrapper>
       </Product>
