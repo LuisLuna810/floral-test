@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Typography, FormControl, InputLabel, Grid, MenuItem, Select, Box, Chip, Button, TextField } from '@mui/material';
 import { AdminNavbar } from './panel';
 
@@ -87,10 +87,10 @@ const PriceInput = ({ prices, onChange }) => {
 export const ProductForm = () => {
 
   const dispatch = useDispatch()
-  
-  const {categories} = useSelector((state) => state.categories.categories);
-  const {colors} = useSelector((state) => state.colors);
-  
+
+  const { categories } = useSelector((state) => state.categories.categories);
+  const { colors } = useSelector((state) => state.colors);
+
 
   const [product, setProduct] = useState({
     name: '',
@@ -101,38 +101,32 @@ export const ProductForm = () => {
     stock: [],
   });
 
-  
-  
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if( !product.name || !product.price[0].price || !product.description || !product.image || !product.color.length || !selectedCategories.length){
+    if (!product.name || !product.price[0].price || !product.description || !product.image || !product.color.length || !selectedCategories.length) {
       return swal("Todos los campos son requeridos, excepto Cantidad y tamaño")
-    }else{
-      console.log('Producto enviado', product);
-    dispatch(createProduct(product))
+    } else {
+      dispatch(createProduct(product))
     }
-    
-    
-   
   };
 
   const handlePriceChange = (prices) => {
-  setProduct({
-    ...product,
-    price: prices,
-  });
-};
+    setProduct({
+      ...product,
+      price: prices,
+    });
+  };
 
   const handleColorChange = (event) => {
     const selectedColors = event.target.value;
-  
+
     const updatedStock = selectedColors.map((colorOption) => ({
       ...colorOption,
       stock: '',
     }));
-  
+
     setProduct({
       ...product,
       color: selectedColors,
@@ -140,7 +134,7 @@ export const ProductForm = () => {
     });
   };
 
-  
+
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -175,15 +169,13 @@ export const ProductForm = () => {
     });
   };
 
- 
 
-  useEffect(()=>{
+
+  useEffect(() => {
     dispatch(getCategories())
     dispatch(getColor())
   }, [dispatch])
 
-  console.log(colors)
- 
   return (
     <div>
       <AdminNavbar />
@@ -195,38 +187,38 @@ export const ProductForm = () => {
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-              <FormControl fullWidth margin="normal">
-  <InputLabel id="category-select-label">Categoría</InputLabel>
-  <Select
-    labelId="category-select-label"
-    multiple
-    value={selectedCategories}
-    onChange={handleCategoryChange}
-    renderValue={(selected) => (
-      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-        {selected.map((categoryId) => {
-          const category = categories.find((cat) => cat.id === categoryId);
-          return (
-            <Chip
-              key={category.id}
-              label={category.name}
-              sx={{
-                marginRight: '8px',
-                marginBottom: '8px',
-              }}
-            />
-          );
-        })}
-      </Box>
-    )}
-  >
-    {categories?.map((category) => (
-      <MenuItem key={category.id} value={category.id}>
-        {category.name}
-      </MenuItem>
-    ))}
-  </Select>
-</FormControl>
+                <FormControl fullWidth margin="normal">
+                  <InputLabel id="category-select-label">Categoría</InputLabel>
+                  <Select
+                    labelId="category-select-label"
+                    multiple
+                    value={selectedCategories}
+                    onChange={handleCategoryChange}
+                    renderValue={(selected) => (
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                        {selected.map((categoryId) => {
+                          const category = categories.find((cat) => cat.id === categoryId);
+                          return (
+                            <Chip
+                              key={category.id}
+                              label={category.name}
+                              sx={{
+                                marginRight: '8px',
+                                marginBottom: '8px',
+                              }}
+                            />
+                          );
+                        })}
+                      </Box>
+                    )}
+                  >
+                    {categories?.map((category) => (
+                      <MenuItem key={category.id} value={category.id}>
+                        {category.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
                 <FormControl fullWidth required margin="normal">
                   <InputLabel id="color-select-label">Color</InputLabel>
                   <Select
@@ -269,7 +261,7 @@ export const ProductForm = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              
+
 
 
               <Grid item xs={12}>
@@ -282,10 +274,10 @@ export const ProductForm = () => {
                   fullWidth
                 />
               </Grid>
-             
+
               <Grid item xs={12}>
-  <PriceInput prices={product.price} onChange={handlePriceChange} />
-</Grid>
+                <PriceInput prices={product.price} onChange={handlePriceChange} />
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -316,10 +308,10 @@ export const ProductForm = () => {
                 )}
               </Grid>
 
-              
-              
-              
-    
+
+
+
+
 
               <Grid item xs={12}>
                 <Button type="submit" variant="contained" color="primary">Guardar</Button>

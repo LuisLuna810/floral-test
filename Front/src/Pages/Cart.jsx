@@ -8,8 +8,6 @@ import { addProduct, removeProduct, updateQuantity } from "../state/slices/CartS
 import Footer from '../components/footer';
 
 
-
-
 const CartItem = ({ item, onUpdateQuantity, onDelete }) => {
 
 

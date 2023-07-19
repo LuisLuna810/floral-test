@@ -27,7 +27,7 @@ console.log(orden)
     { field: 'id', headerName: 'ID', width: 20 },
     { field: 'senderName', headerName: 'Nombre', width: 200 },
     { field: 'cellphone', headerName: 'Telefono', width: 200 },
-    { field: 'estado', headerName: 'Estado', width: 250 , color:"green"},
+    { field: 'estado', headerName: 'Estado', width: 200 , color:"green"},
     { field: 'idCompra', headerName: 'MercadoPago ID', width: 240 , color:"green"},
     
     
@@ -48,6 +48,7 @@ console.log(orden)
         </button>
       ),
     },
+    { field: 'description', headerName: 'Descripcion', width: 200 },
     { field: 'updatedAt', headerName: 'Fecha y hora', width: 200 , color:"green"},
   ];
 

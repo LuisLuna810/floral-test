@@ -1,4 +1,3 @@
-
 const mercadopago = require('mercadopago');
 const axios = require("axios")
 const { Orden, User } = require('../../db')
@@ -9,20 +8,12 @@ const {
   NOTIFICATION_MERCADOPAGO_BACK
 } = process.env;
 
-
-
-
 //whatsapp 
 const accountSid = 'AC5eadedd02a97cf19742a565e921f1d80';
 const authToken = '5a7e6e3a8b6fc63333814f562b693c12';
 const client = require('twilio')(accountSid, authToken);
 
 const tokenmp = 'TEST-7747005671618142-071007-2360bfeaa836996ec21b1f0a1adf7e77-1419080211'
-
-
-
-
-
 
   const postPagar = async (req, res) => {
     
@@ -147,11 +138,6 @@ const tokenmp = 'TEST-7747005671618142-071007-2360bfeaa836996ec21b1f0a1adf7e77-1
       console.log(error)
     }
   };
-
-
-  
-  
-
 
   const getOrden = async (req, res) => {
 

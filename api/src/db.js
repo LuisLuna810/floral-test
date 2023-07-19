@@ -35,9 +35,6 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { User, Product, Color, Stock, Category, Price} = sequelize.models;
 
 
-
-
-
 Product.hasMany(Stock); // Productos tiene muchos stock
 Stock.belongsTo(Product); // Stock pertece a Producto
 Color.hasMany(Stock);
