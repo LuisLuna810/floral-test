@@ -29,10 +29,10 @@ export default function Actions({ matches }) {
             sx={{
               display: "flex",
               justifyContent: "center",
-              color: matches && Colors.secondary,
+              color: "white",
             }}
             primary="Cart"
-          ><Badge badgeContent={cart?.length} color="secondary">
+          ><Badge badgeContent={cart?.length} sx={{color: "white"}} >
             <ShoppingCartIcon /></Badge>
           </ListItemIcon>
         </ListItemButton>
@@ -47,7 +47,7 @@ export default function Actions({ matches }) {
             sx={{
               display: "flex",
               justifyContent: "center",
-              color: matches && Colors.secondary,
+              color: "white",
             }}
           >
             <PersonIcon  />

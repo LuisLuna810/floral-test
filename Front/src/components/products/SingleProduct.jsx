@@ -98,11 +98,6 @@ export default function SingleProduct({ product, matches }) {
             <ProductFavButton isfav={0}>
               <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
             </ProductFavButton>
-            {/* <ProductActionButton>
-              <Tooltip placement="left" title="share this product">
-                <ShareIcon color="primary" />
-              </Tooltip>
-            </ProductActionButton> */}
             <ProductActionButton onClick={() => showProductDetailDialog()}>
               <Tooltip placement="left" title="Full view">
                 <FitScreenIcon color="primary" />

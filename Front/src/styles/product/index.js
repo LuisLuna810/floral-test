@@ -61,12 +61,12 @@ export const ProductAddToCart = styled(Button, {
   fontSize: "12px",
   [theme.breakpoints.up("md")]: {
     position: "absolute",    
-    bottom: "2%",
+    bottom: "0%",
     width: "300px",
     padding: "10px 5px",
     animation:
       show &&
-      `${slideInBottom} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+      `${slideInBottom} 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
   },
   background: Colors.secondary,
   opacity: 0.9,

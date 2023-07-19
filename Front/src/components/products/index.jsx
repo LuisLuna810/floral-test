@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Button,
@@ -19,8 +19,7 @@ import SingleProductDesktop from "./SingleProductDesktop";
 import { getAllProduct } from "../../state/actions/createProduct";
 
 export default function Products() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -29,21 +28,23 @@ export default function Products() {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
 
-  const { products } = useSelector((state) => state.products)
+  const { products } = useSelector((state) => state.products);
   const categories = [
     { id: 1, name: "Flores" },
     { id: 2, name: "Rosas" },
     { id: 3, name: "Girasoles" },
-
   ];
 
   useEffect(() => {
-    dispatch(getAllProduct())
-  }, [])
+    dispatch(getAllProduct());
+  }, []);
 
   const filterProducts = () => {
     //let filtered = products?.products?products.products:[]
-    let filtered = products && products.products ? JSON.parse(JSON.stringify(products.products)) : [];
+    let filtered =
+      products && products.products
+        ? JSON.parse(JSON.stringify(products.products))
+        : [];
 
     if (selectedCategory) {
       filtered = filtered.filter((product) =>
@@ -67,7 +68,7 @@ export default function Products() {
   };
 
   const handleCategoryChange = (event) => {
-    setCurrentPage(1)
+    setCurrentPage(1);
     setSelectedCategory(event.target.value);
   };
 
@@ -76,7 +77,7 @@ export default function Products() {
   };
 
   const handleSearchChange = (event) => {
-    setCurrentPage(1)
+    setCurrentPage(1);
     setSearchQuery(event.target.value);
   };
 
@@ -130,7 +131,13 @@ export default function Products() {
 
   return (
     <Container>
-      <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
         <Box sx={{ marginBottom: "16px", width: "70%" }}>
           <TextField
             label="Buscar producto"
@@ -140,15 +147,16 @@ export default function Products() {
           />
         </Box>
         <Box sx={{ marginBottom: "16px", display: "flex", flexWrap: "wrap" }}>
-          <FormControl sx={{ marginRight: "16px", width: "120px" }}>
-            <InputLabel id="category-label">Categoría:</InputLabel>
+          <FormControl sx={{ marginRight: "16px", width: "10rem"}} >
+            <InputLabel>Categorías</InputLabel>
             <Select
               labelId="category-label"
               id="category"
               value={selectedCategory}
               onChange={handleCategoryChange}
+              displayEmpty
+              label="Categorias"
             >
-              <MenuItem value="">Todos</MenuItem>
               {categories.map((category) => (
                 <MenuItem key={category.id} value={category.name}>
                   {category.name}
@@ -156,23 +164,7 @@ export default function Products() {
               ))}
             </Select>
           </FormControl>
-
-          {/* <FormControl sx={{width:"90px"}}>
-          <InputLabel id="price-label" >Precio:</InputLabel>
-          <Select
-            labelId="price-label"
-            id="price"
-            value={selectedPrice}
-            onChange={handlePriceChange}
-          >
-            <MenuItem value="">Todos</MenuItem>
-            <MenuItem value="menor">Menor</MenuItem>
-            <MenuItem value="mayor">Mayor</MenuItem>
-          </Select>
-        </FormControl> */}
         </Box>
-
-
       </Box>
       <Grid
         container
@@ -184,8 +176,9 @@ export default function Products() {
         {renderProducts()}
       </Grid>
 
-      <Box sx={{ textAlign: "center" }}>{renderPagination()}</Box>
+      <Box sx={{ textAlign: "center", padding: "2rem" }}>
+        {renderPagination()}
+      </Box>
     </Container>
   );
 }
-
