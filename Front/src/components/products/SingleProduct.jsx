@@ -79,34 +79,23 @@ export default function SingleProduct({ product, matches }) {
 
   return (
     <>
-      <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <Product onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => showProductDetailDialog()}>
+      <Box
+          sx={{
+            maxWidth: "10rem",
+            maxHeight: "10rem",
+            minWidth: "10rem",
+            minHeight: "10rem",
+          }}
+        >
         <ProductImage src={product.image} />
+        </Box>
         <ProductMeta product={product} matches={matches} selectedPrice={selectedPrice} />
         <ProductActionsWrapper>
-
-          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-
-            {product?.prices?.[0]?.size ?
-
-              <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
-              :
-              <></>
-            }
-          </Box>
-
           <Stack direction={matches ? "row" : "column"}>
-            <ProductFavButton isfav={0}>
-              <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
-            </ProductFavButton>
-            <ProductActionButton onClick={() => showProductDetailDialog()}>
-              <Tooltip placement="left" title="Full view">
-                <FitScreenIcon color="primary" />
-              </Tooltip>
-            </ProductActionButton>
           </Stack>
         </ProductActionsWrapper>
       </Product>
-      <ProductAddToCart onClick={handleAddToCart} variant="contained">Add to cart</ProductAddToCart>
       <ProductDetailDialog product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
     </>
   );

@@ -22,13 +22,7 @@ import { addProduct } from "../../state/slices/CartSlice";
 
 import PriceSelect from "../selectprice/PriceSelect";
 import ColorSelect from "../selectcolor/selectcolores";
-
-
-
-
-
-
-
+import logo from "../../utils/image/logo.png.png";
 
 function SlideTransition(props) {
   return <Slide direction="down" {...props} />;
@@ -46,35 +40,38 @@ const ProductDetailInfoWrapper = styled(Box)(() => ({
   lineHeight: 0,
 }));
 
-export default function ProductDetail({ open, onClose, product, selectedPrice, setSelectedPrice, handlePriceChange, selectedColor, setSelectedColor, handleColorChange }) {
+export default function ProductDetail({
+  open,
+  onClose,
+  product,
+  selectedPrice,
+  setSelectedPrice,
+  handlePriceChange,
+  selectedColor,
+  setSelectedColor,
+  handleColorChange,
+}) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
     const { id, name, image } = product;
     const quantity = 1; // O la cantidad deseada
 
-    const productData =
-    {
+    const productData = {
       id,
       name: name + (selectedPrice.size ? " " + selectedPrice.size : ""), // si tiene tamaño, se le agrega al nombre
-      image, size: selectedPrice.size,
+      image,
+      size: selectedPrice.size,
       price: selectedPrice.price,
       quantityPrice: selectedPrice.quantity,
       quantity,
       color: selectedColor.CodigoColor,
-      ColorName: selectedColor.ColorName
+      ColorName: selectedColor.ColorName,
     };
     dispatch(addProduct(productData));
-
   };
-
-
-
-
-
-
 
   return (
     <Dialog
@@ -92,37 +89,47 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
           display="flex"
           alignItems="center"
           justifyContent={"space-between"}
+          sx={{height: "4rem"}}
         >
-          Todo Floral
+          <Box>
+            {" "}
+            <img style={{ maxWidth: "100px" }} src={logo} alt="todo floral" />
+          </Box>
           <IconButton onClick={onClose}>
             <CloseIcon />
           </IconButton>
         </Box>
       </DialogTitle>
       <DialogContent>
-        <ProductDetailWrapper display={"flex"} flexDirection={matches ? "column" : "row"}>
+        <ProductDetailWrapper
+          display={"flex"}
+          flexDirection={matches ? "column" : "row"}
+        >
           <Product sx={{ mr: 4 }}>
             <ProductImage src={product.image} />
           </Product>
           <ProductDetailInfoWrapper>
-
             <Typography sx={{ lineHeight: 2 }} variant="h4">
               {product.name}
             </Typography>
-            <Typography>
-              {product.description}
-
-            </Typography>
+            <Typography>{product.description}</Typography>
             <Typography>Color</Typography>
             <Box sx={{ display: "flex", maxWidth: "75px" }}>
-
-
-              <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
+              <ColorSelect
+                product={product}
+                selectedColor={selectedColor}
+                setSelectedColor={setSelectedColor}
+                handleColorChange={handleColorChange}
+              />
             </Box>
             <Typography>Detallex:</Typography>
             <Box sx={{ display: "flex", maxWidth: "75px" }}>
-
-              <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
+              <PriceSelect
+                product={product}
+                selectedPrice={selectedPrice}
+                setSelectedPrice={setSelectedPrice}
+                handlePriceChange={handlePriceChange}
+              />
             </Box>
             <Box
               sx={{ mt: 4 }}
@@ -132,7 +139,9 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
             >
               {/* <IncDec /> */}
 
-              <Button variant="contained" onClick={handleAddToCart}>Add to Cart</Button>
+              <Button variant="contained" onClick={handleAddToCart}>
+                Add to Cart
+              </Button>
             </Box>
 
             <Box
@@ -140,9 +149,7 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
                 mt: 4,
                 color: Colors.dove_gray,
               }}
-            >
-
-            </Box>
+            ></Box>
           </ProductDetailInfoWrapper>
         </ProductDetailWrapper>
       </DialogContent>

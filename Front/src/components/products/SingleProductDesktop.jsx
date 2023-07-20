@@ -63,8 +63,9 @@ export default function SingleProductDesktop({ product, matches }) {
 
   const [showOptions, setShowOptions] = useState(false);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (event) => {
     setShowOptions(true);
+    event.target.style.cursor = "pointer";
   };
   const handleMouseLeave = () => {
     setShowOptions(false);
@@ -86,15 +87,6 @@ export default function SingleProductDesktop({ product, matches }) {
         >
           <ProductImage src={product.image} />
         </Box>
-        {(showOptions || matches) && (
-          <ProductAddToCart
-            show={showOptions}
-            variant="contained"
-            onClick={handleAddToCart}
-          >
-            Add to cart
-          </ProductAddToCart>
-        )}
         <ProductActionsWrapper show={showOptions || matches}>
           <Stack direction={matches ? "row" : "column"}></Stack>
         </ProductActionsWrapper>
@@ -105,33 +97,13 @@ export default function SingleProductDesktop({ product, matches }) {
           display: "flex",
           justifyContent: "flex-start",
           marginLeft: "0%",
-          paddingBottom: "38px",
           width: "100%",
         }}
       >
-        <Box sx={{ position: "absolute", marginLeft: "10%" }}>
-          <ColorSelect
-            product={product}
-            selectedColor={selectedColor}
-            setSelectedColor={setSelectedColor}
-            handleColorChange={handleColorChange}
-          />
-        </Box>
-        {product?.prices?.[0]?.size ? ( // Si hay tamaño renderiza el selector
-          <Box sx={{ position: "absolute", marginLeft: "55%" }}>
-            <PriceSelect
-              product={product}
-              selectedPrice={selectedPrice}
-              setSelectedPrice={setSelectedPrice}
-              handlePriceChange={handlePriceChange}
-            />
-          </Box>
-        ) : (
-          <></>
-        )}
+        <ProductMeta product={product} selectedPrice={selectedPrice} />
       </Box>
 
-      <ProductMeta product={product} selectedPrice={selectedPrice} />
+      
       <ProductDetailDialog
         product={product}
         selectedPrice={selectedPrice}

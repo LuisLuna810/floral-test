@@ -12,7 +12,6 @@ export const Product = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("md")]: {
     position: "relative",
   },
-  
 }));
 
 export const ProductImage = styled("img")(({ src, theme }) => ({
@@ -21,22 +20,19 @@ export const ProductImage = styled("img")(({ src, theme }) => ({
   height: "100%",
   objectFit: "cover",
   background: Colors.light_gray,
-  padding: '10px',
-  borderRadius:"6px",
-  animation: "fadeIn 0.8s ease", 
-              '@keyframes fadeIn': {
-                '0%': { opacity: 0 ,
-                    filter: "blur(20px)"
-                },
-                '10%':{
-                  opacity: 1,
-                  filter: "brightness(2) blur(10px)"
-                }
-                
+  padding: "5px",
+  borderRadius: "6px",
+  animation: "fadeIn 0.8s ease",
+  "@keyframes fadeIn": {
+    "0%": { opacity: 0, filter: "blur(20px)" },
+    "10%": {
+      opacity: 1,
+      filter: "brightness(2) blur(10px)",
+    },
   },
   [theme.breakpoints.down("md")]: {
-    width: "80%", 
-    padding: '24px',
+    width: "100%",
+    padding: "5px",
   },
 }));
 
@@ -45,14 +41,16 @@ export const ProductActionButton = styled(IconButton)(() => ({
   margin: 4,
 }));
 
-export const ProductFavButton = styled(ProductActionButton)(({ isfav, theme }) => ({
-  color: isfav ? Colors.primary : Colors.light,  
-  [theme.breakpoints.up("md")]: {
-    position: "absolute",
-    right: 0,
-    top: 0,
-  },
-}));
+export const ProductFavButton = styled(ProductActionButton)(
+  ({ isfav, theme }) => ({
+    color: isfav ? Colors.primary : Colors.light,
+    [theme.breakpoints.up("md")]: {
+      position: "absolute",
+      right: 0,
+      top: 0,
+    },
+  })
+);
 
 export const ProductAddToCart = styled(Button, {
   shouldForwardProp: (prop) => prop !== "show",
@@ -60,7 +58,7 @@ export const ProductAddToCart = styled(Button, {
   width: "120px",
   fontSize: "12px",
   [theme.breakpoints.up("md")]: {
-    position: "absolute",    
+    position: "absolute",
     bottom: "0%",
     width: "300px",
     padding: "10px 5px",
@@ -72,20 +70,39 @@ export const ProductAddToCart = styled(Button, {
   opacity: 0.9,
 }));
 
-export const ProductMetaWrapper = styled(Box)(({theme}) => ({
-  padding: 4,
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-}));
-
-export const ProductActionsWrapper = styled(Box)(({ show, theme }) => ({ 
+export const ProductActionsWrapper = styled(Box)(({ show, theme }) => ({
   [theme.breakpoints.up("md")]: {
-    display: show ? 'visible' : 'none',
+    display: show ? "visible" : "none",
     position: "absolute",
     right: 0,
-    top: '20%',
-    animation: show && `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
-  }
+    top: "20%",
+    animation:
+      show &&
+      `${slideInRight} 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+  },
 }));
 
+export const ProductData = styled(Box)(({ theme }) => ({}));
+
+export const ProductMetaWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "stretch",
+  [theme.breakpoints.up("md")]: {
+    padding: "0 0 0 2.3rem",
+  },
+}));
+
+export const ProductName = styled(Box)(({ theme }) => ({
+  fontSize: "1em",
+  fontFamily: "Roboto,sans-serif",
+  [theme.breakpoints.down("md")]: {
+    display: "flex",
+    justifyContent: "center"
+  },
+}));
+
+export const ProductPrice = styled(Box)(({ theme }) => ({
+  fontSize: "22px",
+  fontWeight: "700",
+}));

@@ -18,10 +18,7 @@ export const AppbarHeader = styled(Typography)(() => ({
   flexGrow: 1,
   fontSize: "4em",
   fontFamily: '"Montez", "cursive"',
-  color: Colors.secondary,
-  "&:hover": {
-    animation: `${textPopUpTop} 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both`,
-  },
+  color: Colors.secondary
 }));
 
 export const ActionIconsContainerMobile = styled(Box)(() => ({
