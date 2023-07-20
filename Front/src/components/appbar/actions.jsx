@@ -32,7 +32,7 @@ export default function Actions({ matches }) {
               color: "white",
             }}
             primary="Cart"
-          ><Badge badgeContent={cart?.length} sx={{color: "white"}} >
+          ><Badge badgeContent={cart?.length} sx={{color: "black"}} >
             <ShoppingCartIcon /></Badge>
           </ListItemIcon>
         </ListItemButton>
@@ -47,13 +47,12 @@ export default function Actions({ matches }) {
             sx={{
               display: "flex",
               justifyContent: "center",
-              color: "white",
+              color: "black",
             }}
           >
             <PersonIcon  />
           </ListItemIcon>
         </ListItemButton>
-        <Divider orientation="vertical" flexItem />
       </MyList>
     </Component>
   );

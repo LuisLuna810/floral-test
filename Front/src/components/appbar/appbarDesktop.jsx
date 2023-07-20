@@ -21,7 +21,7 @@ export default function AppbarDesktop({ matches }) {
   const { setShowSearchBox } = useUIContext();
 
   return (
-    <AppbarContainer sx={{backgroundColor: "#5f2c3e", margin: "0", maxHeight: "100px"}}>
+    <AppbarContainer sx={{backgroundColor: "#ffc4cc ", margin: "0", maxHeight: "100px"}}>
       <Box>
         {" "}
         <img style={{ maxWidth: "100px" }} src={logo} alt="todo floral" />
@@ -30,7 +30,7 @@ export default function AppbarDesktop({ matches }) {
         <ListItemButton
           component={RouterLink}
           to="/"
-          style={{ textDecoration: "none", maxWidth: "7rem", color: "white"}}
+          style={{ textDecoration: "none", maxWidth: "7rem"}}
         >
           <ListItemText sx={{textAlign: "center"}} primary="Home" />
         </ListItemButton>
@@ -38,14 +38,14 @@ export default function AppbarDesktop({ matches }) {
         <ListItemButton
           component={RouterLink}
           to="/productos"
-          style={{ textDecoration: "none", maxWidth: "7rem", color: "white"}}
+          style={{ textDecoration: "none", maxWidth: "7rem"}}
         >
           <ListItemText sx={{textAlign: "center"}} primary="Productos" />
         </ListItemButton>
         <ListItemButton
           component={RouterLink}
           to="/snackcart"
-          style={{ textDecoration: "none", maxWidth: "9rem", color: "white"}}
+          style={{ textDecoration: "none", maxWidth: "9rem"}}
         >
           <ListItemText sx={{textAlign: "center"}} primary="Cotizar Snacks" />
         </ListItemButton>
@@ -53,7 +53,7 @@ export default function AppbarDesktop({ matches }) {
         <ListItemButton
           component={RouterLink}
           to="/servicios"
-          style={{ textDecoration: "none", maxWidth: "7rem", color: "white"}}
+          style={{ textDecoration: "none", maxWidth: "7rem"}}
         >
           <ListItemText sx={{textAlign: "center"}} primary="Servicios" />
         </ListItemButton>
