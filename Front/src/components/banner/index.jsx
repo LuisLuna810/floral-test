@@ -24,15 +24,15 @@ export default function Banner() {
     <BannerContainer >
       <BannerImage src={banner} />
       <BannerContent>
-        <BannerTitle sx={{fontFamily:'"Montez", "cursive"'}} variant="h6">
-        Todo Floral
+        <BannerTitle sx={{fontFamily:'"","cursive"', whiteSpace: 'nowrap', fontSize: "4rem"}} variant="h6">
+        TODO FLORAL
         </BannerTitle>
-        <Typography sx={{fontFamily:'"Montez", "cursive"', fontWeight:"500"}} variant="h4">
+        <Typography sx={{fontFamily:'"", "cursive"', fontWeight:"500", fontSize: "2rem"}} variant="h4">
           Regalar flores es regalar amor
         </Typography>
         
 
-        <BannerDescription  variant="subtitle">
+        <BannerDescription  variant="subtitle" sx={{paddingTop: "1rem"}}>
         Arreglos florales, regalos y carrito de snacks
         </BannerDescription>
 
