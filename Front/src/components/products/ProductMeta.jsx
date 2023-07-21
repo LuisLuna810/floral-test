@@ -1,15 +1,27 @@
-
 import { Typography } from "@mui/material";
-import { ProductMetaWrapper } from "../../styles/product";
+import { ProductMetaWrapper, ProductPrice, ProductName } from "../../styles/product";
+
+
 export default function ProductMeta({ product, matches, selectedPrice }) {
   return (
     <ProductMetaWrapper>
-      <Typography variant={matches ? "h6" : "h5"} lineHeight={2}>
+      <ProductName>
         {product.name}
-      </Typography>
-      <Typography sx={{ fontWeight: "600" }} variant={matches ? "caption" : "body1"}>
+      </ProductName>
+      <ProductPrice>
         ${selectedPrice ? selectedPrice.price : product?.prices[0]?.price}
-      </Typography>
+      </ProductPrice>
     </ProductMetaWrapper>
   );
 }
+
+/*
+    <ProductData>
+      <ProductName>
+        {product.name}
+        </ProductName>
+      <ProductPrice>
+        ${selectedPrice ? selectedPrice.price : product?.prices[0]?.price}
+      </ProductPrice>
+    </ProductData>
+*/

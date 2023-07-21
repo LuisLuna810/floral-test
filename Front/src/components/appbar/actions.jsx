@@ -5,17 +5,32 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Colors } from "../../styles/theme";
-import React, {useEffect} from "react";
-
+import React, {useEffect, useState} from "react";
+import { useTheme } from '@mui/material/styles';
 import {useDispatch, useSelector} from "react-redux"
 
 export default function Actions({ matches }) {
 
   const Component = matches ? ActionIconsContainerMobile : ActionIconsContainerDesktop;
   const dispatch = useDispatch()
+  const theme = useTheme();
+
+  const [w, setW] = useState(window.innerWidth);
+
+  useEffect(()=>{
+    const handleResize = () =>{
+      setW(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () =>{
+      window.removeEventListener("resize", handleResize)
+    };
+  }, [])
 
   const cart = useSelector(state => state.cart)
-
+  console.log(w);
   return (
     <Component>
       <MyList type="row">
@@ -32,8 +47,8 @@ export default function Actions({ matches }) {
               color: "white",
             }}
             primary="Cart"
-          ><Badge badgeContent={cart?.length} sx={{color: "black"}} >
-            <ShoppingCartIcon /></Badge>
+          ><Badge badgeContent={cart?.length} sx={{color: w>900 ? 'black' : 'white'}}>
+            <ShoppingCartIcon/></Badge>
           </ListItemIcon>
         </ListItemButton>
         
@@ -47,7 +62,7 @@ export default function Actions({ matches }) {
             sx={{
               display: "flex",
               justifyContent: "center",
-              color: "black",
+              color: w>900 ? 'black' : 'white',
             }}
           >
             <PersonIcon  />

@@ -24,6 +24,7 @@ import { addProduct } from "../../state/slices/CartSlice";
 import PriceSelect from "../selectprice/PriceSelect";
 import ColorSelect from "../selectcolor/selectcolores";
 import { useState } from "react";
+import logo from "../../utils/image/logo.png.png";
 
 function SlideTransition(props) {
   return <Slide direction="down" {...props} />;
@@ -41,7 +42,17 @@ const ProductDetailInfoWrapper = styled(Box)(() => ({
   lineHeight: 0,
 }));
 
-export default function ProductDetail({ open, onClose, product, selectedPrice, setSelectedPrice, handlePriceChange, selectedColor, setSelectedColor, handleColorChange }) {
+export default function ProductDetail({
+  open,
+  onClose,
+  product,
+  selectedPrice,
+  setSelectedPrice,
+  handlePriceChange,
+  selectedColor,
+  setSelectedColor,
+  handleColorChange,
+}) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch()
@@ -51,11 +62,11 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
     const { id, name, image } = product;
     const quantity = 1; // O la cantidad deseada
 
-    const productData =
-    {
+    const productData = {
       id,
       name: name + (selectedPrice.size ? " " + selectedPrice.size : ""), // si tiene tamaño, se le agrega al nombre
-      image, size: selectedPrice.size,
+      image,
+      size: selectedPrice.size,
       price: selectedPrice.price,
       quantityPrice: selectedPrice.quantity,
       quantity,
@@ -64,7 +75,6 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
       detailDescription: description
     };
     dispatch(addProduct(productData));
-
   };
 
   return (
@@ -83,8 +93,12 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
           display="flex"
           alignItems="center"
           justifyContent={"space-between"}
+          sx={{height: "4rem"}}
         >
-          Todo Floral
+          <Box>
+            {" "}
+            <img style={{ maxWidth: "100px" }} src={logo} alt="todo floral" />
+          </Box>
           <IconButton onClick={onClose}>
             <CloseIcon />
           </IconButton>
@@ -130,7 +144,9 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
             >
               {/* <IncDec /> */}
 
-              <Button variant="contained" onClick={handleAddToCart}>Add to Cart</Button>
+              <Button variant="contained" onClick={handleAddToCart}>
+                Add to Cart
+              </Button>
             </Box>
 
             <Box
@@ -138,9 +154,7 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
                 mt: 4,
                 color: Colors.dove_gray,
               }}
-            >
-
-            </Box>
+            ></Box>
           </ProductDetailInfoWrapper>
         </ProductDetailWrapper>
       </DialogContent>

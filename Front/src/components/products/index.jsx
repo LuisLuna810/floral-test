@@ -121,6 +121,7 @@ export default function Products() {
           key={i}
           variant={i === currentPage ? "contained" : "outlined"}
           onClick={() => handlePageChange(i)}
+          sx={{m: "0.3rem"}}
         >
           {i}
         </Button>
@@ -147,7 +148,7 @@ export default function Products() {
           />
         </Box>
         <Box sx={{ marginBottom: "16px", display: "flex", flexWrap: "wrap" }}>
-          <FormControl sx={{ marginRight: "16px", width: "10rem"}} >
+          <FormControl sx={{ marginRight: "16px", width: "10rem" }}>
             <InputLabel>Categorías</InputLabel>
             <Select
               labelId="category-label"
