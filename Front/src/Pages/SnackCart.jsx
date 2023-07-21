@@ -8,6 +8,10 @@ import {
   FormControlLabel,
   FormGroup,
   Grid,
+  Box,
+  Card,
+  CardContent,
+  Radio,
 } from "@mui/material";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { styled } from "@mui/material/styles";
@@ -43,6 +47,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export const SnackCalculator = () => {
   const dispatch = useDispatch();
   const [step, setStep] = useState(1);
+  const [cantidad, setCantidad] = useState(0);
   const [formData, setFormData] = useState({
     id: 1,
     name2: "Snacks:",
@@ -84,42 +89,51 @@ export const SnackCalculator = () => {
 
   const snackOptions = [
     {
-      name: "Popcorn",
+      cantidad: 50,
+      name: "Pack 1",
       price: 2.5,
+      description:
+        "✨50 vasos locos",
       image:
         "https://img2.freepng.es/20180202/luq/kisspng-popcorn-maker-clip-art-popcorn-transparent-png-5a74c0926c58c7.5964079715176009144438.jpg",
     },
     {
-      name: "Chips",
+      cantidad: 50,
+      name: "Pack 2",
       price: 1.5,
+      description:
+        "✨50 tostielotes,",
       image:
         "https://www.marialabonita.com/wp-content/uploads/2019/07/chips-sabor-jalapeno-barcel-46g.jpg",
     },
     {
-      name: "Nachos",
+      cantidad: 50,
+      name: "Pack 3",
       price: 3,
+      description:
+        "✨25 vasos locos y 25 tostielotes",
       image:
         "https://d1on8qs0xdu5jz.cloudfront.net/webapp/images/fotos/b/0000000000/1545_1.jpg",
     },
     {
-      name: "Pretzels",
+      cantidad: 30,
+      name: "Pack 1",
       price: 2,
+      description: "Pretzels",
       image:
         "https://images-na.ssl-images-amazon.com/images/I/71fUvVB-ctL._AC_UL600_SR600,600_.jpg",
     },
     {
-      name: "Candy",
+      cantidad: 30,
+      name: "Pack 2",
       price: 1,
+      description: "Candy",
       image: "https://m.media-amazon.com/images/I/91vVgmcL6GL.jpg",
     },
   ];
 
   const handleNext = () => {
-    if (formData.guests < 30) {
-      swal("El minimo de invitados es 30");
-    } else {
-      setStep(step + 1);
-    }
+    setStep(step + 1);
   };
 
   const handleBack = () => {
@@ -198,39 +212,68 @@ export const SnackCalculator = () => {
             }}
             variant="h6"
           >
-            Paso 1: Ingrese la cantidad de invitados, Minimo 30
+            Elija el número que se adecue a la cantidad de invitados
           </Typography>
-          <TextField
-            label="Cantidad de invitados"
-            type="number"
-            name="guests"
-            value={formData.guests}
-            onChange={handleInputChange}
-            inputProps={{ min: 30 }}
-          />
-          <Button
-            variant="contained"
-            onClick={handleNext}
-            sx={{ margin: "50px" }}
-          >
-            Siguiente
-          </Button>
+          <Box sx={{ display: "flex", flex: "wrap", gap: "1rem" }}>
+            <Button
+              onClick={() => {
+                setCantidad(30);
+                handleNext();
+              }}
+              sx={{
+                bgcolor: "primary.main",
+                color: "white",
+                p: 2,
+                borderRadius: "2rem",
+                "&:hover": { bgcolor: "primary.main" },
+              }}
+            >
+              30
+            </Button>
+            <Button
+              onClick={() => {
+                setCantidad(50);
+                handleNext();
+              }}
+              sx={{
+                bgcolor: "primary.main",
+                color: "white",
+                p: 2,
+                borderRadius: "2rem",
+                "&:hover": { bgcolor: "primary.main" },
+              }}
+            >
+              50
+            </Button>
+            <Button
+              onClick={() => {
+                setCantidad(80);
+                handleNext();
+              }}
+              sx={{
+                bgcolor: "primary.main",
+                color: "white",
+                p: 2,
+                borderRadius: "2rem",
+                "&:hover": { bgcolor: "primary.main" },
+              }}
+            >
+              80
+            </Button>
+          </Box>
         </StepContainer>
       </CSSTransition>
     );
   };
 
-  const renderStepTwo = () => {
+  const renderStepTwo = (cantInvitados) => {
+    const filteredSnackOptions = snackOptions.filter(
+      (snack) => snack.cantidad === cantInvitados
+    );
+
     return (
       <CSSTransition key="step2" classNames="slide" timeout={500}>
         <StepContainer className="step-2" sx={{ display: "flex" }}>
-          <Button
-            variant="contained"
-            onClick={handleBack}
-            sx={{ margin: "26px" }}
-          >
-            Atrás
-          </Button>
           <Typography
             sx={{
               marginBottom: "28px",
@@ -241,13 +284,13 @@ export const SnackCalculator = () => {
             }}
             variant="h6"
           >
-            Paso 2: Seleccione los snacks
+            Seleccione su Pack preferido
           </Typography>
-          <FormGroup>
-            {snack?.snacks?.map((snack) => (
-              <Grid
+          <FormGroup sx={{ gap: "1rem", display: "flex", flex: "wrap" }}>
+            {filteredSnackOptions.map((snack) => (
+              <Box
                 container
-                rowSpacing={1}
+                rowSpacing={12}
                 columnSpacing={{ xs: 1, sm: 2, md: 3 }}
               >
                 <Grid item xs={8}>
@@ -260,31 +303,59 @@ export const SnackCalculator = () => {
                           checked={formData.selectedSnacks.includes(snack.name)}
                           onChange={handleSnackChange}
                         />
-                      }
-                      label={`Nombre: ${snack.name} Descripción: ${snack.description} Precio: $${snack.price}`}
+                      }sx={{display: "flex", justifyContent:"flex-start"}}
+                      label={`${snack.name} - Incluye: ${snack.description} Precio: $${snack.price}`}
                     />
                   </Item>
                 </Grid>
-                <Grid item xs={4}>
+
+                {/*            <Grid item xs={4}>
                   <Item>
                     <img
                       src={snack.image}
                       alt="imageSnack"
-                      style={{ width: "50px", height: "50px", gap: "5px" }}
+                      style={{ width: "50px", height: "43px", gap: "5px" }}
                     />
                   </Item>
-                </Grid>
-              </Grid>
+                    </Grid> */}
+              </Box>
             ))}
+            <Box>
+              <CardContent
+                sx={{
+                  border: "1px solid #e0e0e0",
+                  backgroundColor: "#fff",
+                  padding: "16px",
+                }}
+              >
+                <Typography variant="body1" sx={{display: "flex", justifyContent:"center",}}>
+                  IMPORTANTE
+                  </Typography>
+                  <Typography sx={{fontSize: "15px"}}>
+                  - Todos los Packs incluyen 4 horas de servicio con personal 
+                  </Typography>
+                  <Typography sx={{fontSize: "15px"}}>
+                  - Transporte y montaje eventos fuera de la ciudad con costo de transporte extra 
+                </Typography>
+              </CardContent>
+            </Box>
           </FormGroup>
-
-          <Button
-            variant="contained"
-            onClick={handleNext}
-            sx={{ margin: "26px" }}
-          >
-            Siguiente
-          </Button>
+          <Box>
+            <Button
+              variant="contained"
+              onClick={handleBack}
+              sx={{ margin: "26px" }}
+            >
+              Atrás
+            </Button>
+            <Button
+              variant="contained"
+              onClick={handleNext}
+              sx={{ margin: "26px" }}
+            >
+              Siguiente
+            </Button>
+          </Box>
         </StepContainer>
       </CSSTransition>
     );
@@ -294,13 +365,6 @@ export const SnackCalculator = () => {
     return (
       <CSSTransition key="step3" classNames="slide" timeout={500}>
         <StepContainer className="step-3">
-          <Button
-            variant="contained"
-            onClick={handleBack}
-            sx={{ margin: "26px" }}
-          >
-            Atrás
-          </Button>
           <Typography
             sx={{
               fontSize: "32px",
@@ -324,14 +388,22 @@ export const SnackCalculator = () => {
               shrink: true,
             }}
           />
-
-          <Button
-            variant="contained"
-            onClick={handleFinish}
-            sx={{ margin: "26px" }}
-          >
-            Finalizar
-          </Button>
+          <Box>
+            <Button
+              variant="contained"
+              onClick={handleBack}
+              sx={{ margin: "26px" }}
+            >
+              Atrás
+            </Button>
+            <Button
+              variant="contained"
+              onClick={handleFinish}
+              sx={{ margin: "26px" }}
+            >
+              Finalizar
+            </Button>
+          </Box>
         </StepContainer>
       </CSSTransition>
     );
@@ -427,7 +499,7 @@ export const SnackCalculator = () => {
       case 1:
         return renderStepOne();
       case 2:
-        return renderStepTwo();
+        return renderStepTwo(cantidad);
       case 3:
         return renderStepThree();
       case 4:
