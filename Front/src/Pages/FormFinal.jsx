@@ -253,7 +253,7 @@ export const FormFinal = ({ decodedToken }) => {
         <TextField
           id="description"
           name="description"
-          label="Descripcion"
+          label="Referencia"
           value={formik.values.description}
           onChange={formik.handleChange}
           fullWidth
