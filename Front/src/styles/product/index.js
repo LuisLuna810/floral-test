@@ -21,7 +21,7 @@ export const ProductImage = styled("img")(({ src, theme }) => ({
   height: "100%",
   objectFit: "cover",
   background: Colors.light_gray,
-  padding: '10px',
+  padding: '0px',
   borderRadius:"6px",
   animation: "fadeIn 0.8s ease", 
               '@keyframes fadeIn': {

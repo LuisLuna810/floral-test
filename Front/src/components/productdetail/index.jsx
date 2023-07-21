@@ -45,7 +45,7 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch()
-  const [description, setDescription]=useState("")
+  const [description, setDescription] = useState("")
 
   const handleAddToCart = () => {
     const { id, name, image } = product;
@@ -92,34 +92,36 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
       </DialogTitle>
       <DialogContent>
         <ProductDetailWrapper display={"flex"} flexDirection={matches ? "column" : "row"}>
-          <Product sx={{ mr: 4 }}>
+          <Product sx={{ mr: 10, ml: 10, maxWidth: "45rem", maxHeight: "45rem" }}>
             <ProductImage src={product.image} />
           </Product>
-          <ProductDetailInfoWrapper>
+          <ProductDetailInfoWrapper sx={{ mr: 10, ml: 10, width:"100%" }}>
 
-            <Typography sx={{ lineHeight: 2 }} variant="h4">
-              {product.name}
+            <Typography sx={{ fontFamily: '"", "cursive"', fontWeight: "500", fontSize: "3.5rem" }} variant="h4">
+              {product.name.charAt(0).toLocaleUpperCase()}{product.name.slice(1).toLocaleLowerCase()}
             </Typography>
-            <Typography>
-              {product.description}
-
+            <Typography sx={{ fontFamily: '"", "cursive"', fontWeight: "500", fontSize: "1.8rem", mb:5}} variant="h5">
+              {product.description.charAt(0).toLocaleUpperCase()}{product.description.slice(1).toLocaleLowerCase()}
             </Typography>
-            <Typography>Color</Typography>
-            <Box sx={{ display: "flex", maxWidth: "75px" }}>
-
-
-              <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
+            <Box sx={{ display: "flex", justifyContent:"space-between"}}>
+              <Box>
+                <Typography>Color:</Typography>
+                <Box sx={{ display: "flex", maxWidth: "75px", mb: 3 }}>
+                  <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
+                </Box>
+                <Typography>Tamaño:</Typography>
+                <Box sx={{ display: "flex", maxWidth: "75px", mb: 3 }}>
+                  <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
+                </Box>
+              </Box>
+              <Box sx={{ maxWidth: "250px" , Height:"300px"}}>
+                <TextField inputProps={{ style: { height: 300 }}} name="description"
+                  label="Nota (opcional):" onChange={(e) => setDescription(e.target.value)} />
+              </Box>
             </Box>
-            <Typography>Tamaño:</Typography>
-            <Box sx={{ display: "flex", maxWidth: "75px" }}>
 
-              <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
-            </Box>
-            <Box sx={{ display: "flex", maxWidth: "150px" }}>
 
-              <TextField  sx={{ display: "flex" }}name="description"
-              label="Nota (opcional):" onChange={(e) => setDescription(e.target.value)}/>
-            </Box>
+
             <Box
               sx={{ mt: 4 }}
               display="flex"
