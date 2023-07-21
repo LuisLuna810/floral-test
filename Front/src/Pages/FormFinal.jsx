@@ -16,7 +16,7 @@ export const FormFinal = ({ decodedToken }) => {
   const [cartItems, setCartItems] = useState(cart);
   const [priceTotal, setPriceTotal] = useState(0)
   const [termsAcepted, setTermsAcepted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  //const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [userCompras, setUserCompras] = useState(null)
 
@@ -56,13 +56,14 @@ export const FormFinal = ({ decodedToken }) => {
     cellphone: Yup.number().required("Campo requerido").typeError("Debe ser un numero"),
     deliveryType: Yup.string().required("Campo requerido"),
     checkTerms: Yup.boolean().oneOf([true], "Debe aceptar los terminos y condiciones"),
+    
   });
 
 
   const InvitadoId = "48ad6fdc-a31a-49a3-aca1-b157755d745e"
 
   const onSubmit = (values) => {
-    setIsSubmitting(true);
+    console.log("payload");
     if (values.deliveryType === "address" && !values.address) {
 
       alert("Por favor, completa una direccion para hacer el envio.");
@@ -84,6 +85,7 @@ export const FormFinal = ({ decodedToken }) => {
         
         totalCompras: userCompras ? userCompras : 0 // Le envio el total de compras al creador de link de mercadopago para saber si aplicar descuento o no, ya que en el 5 compra se hace descuento
       }
+      
       dispatch(Pagar(payload))
     }
   };
@@ -117,9 +119,11 @@ export const FormFinal = ({ decodedToken }) => {
 
     return options;
   }
+  const logge = () => console.log("payload");
 
   const formik = useFormik({
     initialValues,
+    logge,
     validationSchema,
     onSubmit,
   });
@@ -254,7 +258,6 @@ export const FormFinal = ({ decodedToken }) => {
           onChange={formik.handleChange}
           fullWidth
           margin="normal"
-          error={formik.touched.description && Boolean(formik.errors.description)}
           helperText={formik.touched.description && formik.errors.description}
         />
         <FormControlLabel
@@ -282,7 +285,7 @@ export const FormFinal = ({ decodedToken }) => {
 
           </Box>
         </Box>
-        <Button sx={{ background: "green", fontSize: "18px", maxWidth: "800px", width: "100%", marginBottom: "36px" }} type="submit" variant="contained" color="primary" disabled={!termsAcepted || isSubmitting}>
+        <Button sx={{ background: "green", fontSize: "18px", maxWidth: "800px", width: "100%", marginBottom: "36px" }} type="submit" variant="contained" color="primary" disabled={!termsAcepted}>
           PAGAR
         </Button>
         <img
@@ -295,10 +298,3 @@ export const FormFinal = ({ decodedToken }) => {
     </Box>
   );
 };
-
-
-
-
-
-
-

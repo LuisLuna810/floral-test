@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Typography, IconButton, Grid, Box, Button, useMediaQuery, FormControlLabel, Checkbox } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Colors } from '../styles/theme';
@@ -83,18 +83,12 @@ export const Cart = () => {
   const [cartItems, setCartItems] = useState(cart);
   const [shippingChecked, setShippingChecked] = useState(false);
 
-
-
   const isMobile = useMediaQuery('(max-width:600px)');
-
-
 
   const updateQuantitys = (productId, newQuantity, color, size, price) => {
     if (newQuantity < 1) {
       return;
     }
-
-
 
     const updatedItems = cartItems.map((cartItem) => {
       if (cartItem.id === productId && cartItem.color === color && cartItem.size === size && cartItem.price === price) {
@@ -107,8 +101,6 @@ export const Cart = () => {
     });
 
     setCartItems(updatedItems);
-
-
   };
 
   const removeFromCart = (productId, color) => {

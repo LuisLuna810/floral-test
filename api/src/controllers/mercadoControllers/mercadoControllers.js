@@ -1,4 +1,4 @@
-const mercadopago = require('mercadopago');
+//const mercadopago = require('mercadopago');
 const axios = require("axios")
 const { Orden, User } = require('../../db')
 const { v4: uuidv4 } = require('uuid');
@@ -17,14 +17,14 @@ const tokenmp = 'TEST-7747005671618142-071007-2360bfeaa836996ec21b1f0a1adf7e77-1
 
 const postPagar = async (req, res) => {
 
-  mercadopago.configure({
+  /*mercadopago.configure({
     access_token: "TEST-8021216670138113-070920-8fec9d16d8b40375f92b98e1eb06b24d-235741436"
-  });
+  });*/
 
   const preferenceId = uuidv4();
 
   try {
-    const { cart, senderName, receiverName, deliveryType, address, cellphone, pickupTime, userId, username, totalCompras } = req.body;
+    const { cart, senderName, receiverName, deliveryType, address, cellphone, pickupTime, userId, username, totalCompras, description } = req.body;
 
     // Validar que se haya proporcionado el array de productos
     if (!cart || !Array.isArray(cart) || cart.length === 0) {
@@ -60,7 +60,7 @@ const postPagar = async (req, res) => {
     };
 
     // Crear la preferencia en MercadoPago
-    const response = await mercadopago.preferences.create(preference);
+    //const response = await mercadopago.preferences.create(preference);
     console.log(response, "soy response, busca payment_id")
 
     // Obtener el ID de preferencia de pago generado
@@ -78,7 +78,7 @@ const postPagar = async (req, res) => {
       cart,
       userId: userId,
       username: username,
-
+      description,
       // Otros campos de la orden
     });
 

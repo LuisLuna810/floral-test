@@ -8,6 +8,7 @@ import {
   Typography,
   Button,
   Stack,
+  TextField,
 } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
@@ -22,13 +23,7 @@ import { addProduct } from "../../state/slices/CartSlice";
 
 import PriceSelect from "../selectprice/PriceSelect";
 import ColorSelect from "../selectcolor/selectcolores";
-
-
-
-
-
-
-
+import { useState } from "react";
 
 function SlideTransition(props) {
   return <Slide direction="down" {...props} />;
@@ -50,6 +45,7 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch()
+  const [description, setDescription]=useState("")
 
   const handleAddToCart = () => {
     const { id, name, image } = product;
@@ -64,17 +60,12 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
       quantityPrice: selectedPrice.quantity,
       quantity,
       color: selectedColor.CodigoColor,
-      ColorName: selectedColor.ColorName
+      ColorName: selectedColor.ColorName,
+      detailDescription: description
     };
     dispatch(addProduct(productData));
 
   };
-
-
-
-
-
-
 
   return (
     <Dialog
@@ -119,10 +110,15 @@ export default function ProductDetail({ open, onClose, product, selectedPrice, s
 
               <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
             </Box>
-            <Typography>Detallex:</Typography>
+            <Typography>Tamaño:</Typography>
             <Box sx={{ display: "flex", maxWidth: "75px" }}>
 
               <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
+            </Box>
+            <Box sx={{ display: "flex", maxWidth: "150px" }}>
+
+              <TextField  sx={{ display: "flex" }}name="description"
+              label="Nota (opcional):" onChange={(e) => setDescription(e.target.value)}/>
             </Box>
             <Box
               sx={{ mt: 4 }}
