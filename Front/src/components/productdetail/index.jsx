@@ -106,10 +106,10 @@ export default function ProductDetail({
       </DialogTitle>
       <DialogContent>
         <ProductDetailWrapper display={"flex"} flexDirection={matches ? "column" : "row"}>
-          <Product sx={{ mr: 10, ml: 10, maxWidth: "45rem", maxHeight: "45rem" }}>
+          <Product sx={{  width: "40vw", height: "40vw" }}>
             <ProductImage src={product.image} />
           </Product>
-          <ProductDetailInfoWrapper sx={{ mr: 10, ml: 10, width:"100%" }}>
+          <ProductDetailInfoWrapper sx={{ mr: "2vw", ml: "2vw", width:"auto" }}>
 
             <Typography sx={{ fontFamily: '"", "cursive"', fontWeight: "500", fontSize: "3.5rem" }} variant="h4">
               {product.name.charAt(0).toLocaleUpperCase()}{product.name.slice(1).toLocaleLowerCase()}
@@ -118,7 +118,7 @@ export default function ProductDetail({
               {product.description.charAt(0).toLocaleUpperCase()}{product.description.slice(1).toLocaleLowerCase()}
             </Typography>
             <Box sx={{ display: "flex", justifyContent:"space-between"}}>
-              <Box>
+              <Box sx={{pr:2}}>
                 <Typography>Color:</Typography>
                 <Box sx={{ display: "flex", maxWidth: "75px", mb: 3 }}>
                   <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
@@ -128,8 +128,8 @@ export default function ProductDetail({
                   <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
                 </Box>
               </Box>
-              <Box sx={{ maxWidth: "250px" , Height:"300px"}}>
-                <TextField inputProps={{ style: { height: 300 }}} name="description"
+              <Box sx={{ ml:8, maxWidth: "300px"}}>
+                <TextField inputProps={{ style: { height: 50 }}} name="description"
                   label="Nota (opcional):" onChange={(e) => setDescription(e.target.value)} />
               </Box>
             </Box>
