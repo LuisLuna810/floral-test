@@ -21,7 +21,7 @@ export default function Banner() {
 
 
   return (
-    <BannerContainer >
+    <BannerContainer sx={{justifyContent: "space-evenly"}} >
       <BannerImage src={banner} />
       <BannerContent>
         <BannerTitle sx={{fontFamily:'"","cursive"', whiteSpace: 'nowrap', fontSize: "4rem"}} variant="h6">

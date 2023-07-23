@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { styled } from "@mui/material/styles";
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Paper from "@mui/material/Paper";
 import "./SnackCalculator.css";
 import Swal from "sweetalert2";
@@ -60,6 +61,8 @@ export const SnackCalculator = () => {
 
   const { snack } = useSelector((state) => state.snack);
 
+  const mobile = useMediaQuery('(max-width:720px)');
+
   useEffect(() => {
     dispatch(getSnacks());
   }, [dispatch]);
@@ -92,8 +95,7 @@ export const SnackCalculator = () => {
       cantidad: 50,
       name: "Pack 1",
       price: 2.5,
-      description:
-        "✨50 vasos locos",
+      description: "✨50 vasos locos",
       image:
         "https://img2.freepng.es/20180202/luq/kisspng-popcorn-maker-clip-art-popcorn-transparent-png-5a74c0926c58c7.5964079715176009144438.jpg",
     },
@@ -101,8 +103,7 @@ export const SnackCalculator = () => {
       cantidad: 50,
       name: "Pack 2",
       price: 1.5,
-      description:
-        "✨50 tostielotes,",
+      description: "✨50 tostielotes,",
       image:
         "https://www.marialabonita.com/wp-content/uploads/2019/07/chips-sabor-jalapeno-barcel-46g.jpg",
     },
@@ -110,8 +111,7 @@ export const SnackCalculator = () => {
       cantidad: 50,
       name: "Pack 3",
       price: 3,
-      description:
-        "✨25 vasos locos y 25 tostielotes",
+      description: "✨25 vasos locos y 25 tostielotes",
       image:
         "https://d1on8qs0xdu5jz.cloudfront.net/webapp/images/fotos/b/0000000000/1545_1.jpg",
     },
@@ -204,17 +204,19 @@ export const SnackCalculator = () => {
         <StepContainer className="step-1">
           <Typography
             sx={{
-              margin: "50px",
+              marginBottom: "28px",
+              marginTop: "28px",
               fontSize: "32px",
               display: "flex",
               textAlign: "center",
               justifyContent: "center",
+              fontFamily:'"","cursive"'
             }}
             variant="h6"
           >
-            Elija el número que se adecue a la cantidad de invitados
+            ELIJA EL NUMERO QUE SE ADECUE A LA CANTIDAD DE INVITADOS
           </Typography>
-          <Box sx={{ display: "flex", flex: "wrap", gap: "1rem" }}>
+          <Box sx={{ display: "flex", flex: "wrap", gap: "1rem", flexDirection: mobile ? 'column' : 'column' }}>
             <Button
               onClick={() => {
                 setCantidad(30);
@@ -228,7 +230,7 @@ export const SnackCalculator = () => {
                 "&:hover": { bgcolor: "primary.main" },
               }}
             >
-              30
+              30 personas
             </Button>
             <Button
               onClick={() => {
@@ -243,7 +245,7 @@ export const SnackCalculator = () => {
                 "&:hover": { bgcolor: "primary.main" },
               }}
             >
-              50
+              50 personas
             </Button>
             <Button
               onClick={() => {
@@ -258,7 +260,7 @@ export const SnackCalculator = () => {
                 "&:hover": { bgcolor: "primary.main" },
               }}
             >
-              80
+              80 personas
             </Button>
           </Box>
         </StepContainer>
@@ -277,14 +279,16 @@ export const SnackCalculator = () => {
           <Typography
             sx={{
               marginBottom: "28px",
+              marginTop: "28px",
               fontSize: "32px",
               display: "flex",
               textAlign: "center",
               justifyContent: "center",
+              fontFamily:'"","cursive"'
             }}
             variant="h6"
           >
-            Seleccione su Pack preferido
+            SELECCIONE SU PACK PREFERIDO
           </Typography>
           <FormGroup sx={{ gap: "1rem", display: "flex", flex: "wrap" }}>
             {filteredSnackOptions.map((snack) => (
@@ -303,7 +307,8 @@ export const SnackCalculator = () => {
                           checked={formData.selectedSnacks.includes(snack.name)}
                           onChange={handleSnackChange}
                         />
-                      }sx={{display: "flex", justifyContent:"flex-start"}}
+                      }
+                      sx={{ display: "flex", justifyContent: "flex-start" }}
                       label={`${snack.name} - Incluye: ${snack.description} Precio: $${snack.price}`}
                     />
                   </Item>
@@ -328,14 +333,18 @@ export const SnackCalculator = () => {
                   padding: "16px",
                 }}
               >
-                <Typography variant="body1" sx={{display: "flex", justifyContent:"center",}}>
+                <Typography
+                  variant="body1"
+                  sx={{ display: "flex", justifyContent: "center" }}
+                >
                   IMPORTANTE
-                  </Typography>
-                  <Typography sx={{fontSize: "15px"}}>
-                  - Todos los Packs incluyen 4 horas de servicio con personal 
-                  </Typography>
-                  <Typography sx={{fontSize: "15px"}}>
-                  - Transporte y montaje eventos fuera de la ciudad con costo de transporte extra 
+                </Typography>
+                <Typography sx={{ fontSize: "15px" }}>
+                  - Todos los Packs incluyen 4 horas de servicio con personal
+                </Typography>
+                <Typography sx={{ fontSize: "15px" }}>
+                  - Transporte y montaje eventos fuera de la ciudad con costo de
+                  transporte extra
                 </Typography>
               </CardContent>
             </Box>
@@ -344,14 +353,14 @@ export const SnackCalculator = () => {
             <Button
               variant="contained"
               onClick={handleBack}
-              sx={{ margin: "26px" }}
+              sx={{ margin: "26px",  width:"8rem" }}
             >
               Atrás
             </Button>
             <Button
               variant="contained"
               onClick={handleNext}
-              sx={{ margin: "26px" }}
+              sx={{ margin: "26px",  width:"8rem" }}
             >
               Siguiente
             </Button>
@@ -367,19 +376,21 @@ export const SnackCalculator = () => {
         <StepContainer className="step-3">
           <Typography
             sx={{
+              marginBottom: "28px",
+              marginTop: "28px",
               fontSize: "32px",
               display: "flex",
               textAlign: "center",
               justifyContent: "center",
-              marginBottom: "28px",
+              fontFamily:'"","cursive"'
             }}
             variant="h6"
           >
-            Paso 3: Ingrese la fecha del evento
+            INGRESE LA FECHA DEL EVENTO
           </Typography>
           <TextField
             sx={{ width: "10rem" }}
-            label="Fecha del evento"
+
             type="date"
             name="eventDate"
             value={formData.eventDate}
@@ -392,14 +403,14 @@ export const SnackCalculator = () => {
             <Button
               variant="contained"
               onClick={handleBack}
-              sx={{ margin: "26px" }}
+              sx={{ margin: "26px",  width:"8rem" }}
             >
               Atrás
             </Button>
             <Button
               variant="contained"
               onClick={handleFinish}
-              sx={{ margin: "26px" }}
+              sx={{ margin: "26px",  width:"8rem"  }}
             >
               Finalizar
             </Button>
@@ -419,18 +430,20 @@ export const SnackCalculator = () => {
               display: "flex",
               textAlign: "center",
               justifyContent: "center",
+              fontFamily:'"","cursive"',
+              marginBottom: "28px",
+              marginTop: "28px",
             }}
             variant="h6"
           >
-            Su carrito de snacks
+            SU CARRITO DE SNACKS
           </Typography>
+          <Box>
           <Typography
             sx={{
               fontSize: "20px",
               color: "black",
               display: "flex",
-              textAlign: "center",
-              justifyContent: "center",
             }}
             variant="body1"
           >
@@ -441,8 +454,6 @@ export const SnackCalculator = () => {
             sx={{
               fontSize: "20px",
               display: "flex",
-              textAlign: "center",
-              justifyContent: "center",
             }}
             variant="body1"
           >
@@ -456,8 +467,6 @@ export const SnackCalculator = () => {
             sx={{
               fontSize: "20px",
               display: "flex",
-              textAlign: "center",
-              justifyContent: "center",
             }}
             variant="body1"
           >
@@ -468,27 +477,28 @@ export const SnackCalculator = () => {
             sx={{
               fontSize: "28px",
               display: "flex",
-              textAlign: "center",
-              justifyContent: "center",
             }}
             variant="body1"
           >
             Suma total: $<div style={{ color: "green" }}>{formData.total}</div>
           </Typography>
+          </Box>
+          <Box>
           <Button
             variant="contained"
             onClick={handleBack}
-            sx={{ margin: "26px" }}
+            sx={{ margin: "26px" , width:"8rem" }}
           >
             Atrás
           </Button>
           <Button
             variant="contained"
             onClick={handleAddToCart}
-            sx={{ margin: "26px" }}
+            sx={{ margin: "26px",  width:"8rem"  }}
           >
             Finalizar
           </Button>
+          </Box>
         </StepContainer>
       </CSSTransition>
     );
