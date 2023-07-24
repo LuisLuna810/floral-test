@@ -526,8 +526,8 @@ export const SnackCalculator = () => {
           {renderContent()}
         </TransitionGroup>
       </Container>
-      <Grid sx={{ padding: "250px" }}></Grid>
-      <Footer />
+      <Grid sx={{ padding: "202px" }}></Grid>
+        <Footer />  
     </>
   );
 };

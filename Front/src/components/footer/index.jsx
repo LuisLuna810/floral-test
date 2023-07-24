@@ -30,6 +30,9 @@ export default function Footer() {
         pt: 12,
         pb: 12,
         fontSize: { xs: "12px", md: "14px" },
+        position: "initial",
+        bottom: 0,
+        width: "100%"
       }}
     >
       <Grid
