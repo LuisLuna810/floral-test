@@ -12,15 +12,11 @@ import Promotions from "../components/promotions";
 export const Home = () => {
   return (
     <>
-      <Container disableGutters maxWidth="xl" sx={{ background: "#fff", }}>
+      <Container disableGutters maxWidth={"100%"} sx={{ background: "#fff",}}>
         <Stack>
-          <UIProvider>
-            <Banner />
+          <UIProvider >
+              <Banner/>
             <Promotions />
-            {/* <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-              <Typography variant="h4">Our Products</Typography>
-            </Box>
-            <Products /> */}
             <Footer />
             <AppDrawer />
           </UIProvider>
