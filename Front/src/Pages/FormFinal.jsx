@@ -55,7 +55,7 @@ export const FormFinal = ({ decodedToken }) => {
     receiverName: Yup.string().required("Campo requerido"),
     cellphone: Yup.number().required("Campo requerido").typeError("Debe ser un numero"),
     deliveryType: Yup.string().required("Campo requerido"),
-    checkTerms: Yup.boolean().oneOf([true], "Debe aceptar los terminos y condiciones"),
+    //checkTerms: Yup.boolean().oneOf([true], "Debe aceptar los terminos y condiciones"),
     
   });
 
@@ -119,11 +119,10 @@ export const FormFinal = ({ decodedToken }) => {
 
     return options;
   }
-  const logge = () => console.log("payload");
+ 
 
   const formik = useFormik({
     initialValues,
-    logge,
     validationSchema,
     onSubmit,
   });

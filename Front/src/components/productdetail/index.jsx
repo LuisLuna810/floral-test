@@ -7,8 +7,8 @@ import {
   DialogContent,
   Typography,
   Button,
-  Stack,
   TextField,
+  Divider,
 } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
@@ -57,11 +57,10 @@ export default function ProductDetail({
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch()
   const [description, setDescription] = useState("")
+  const [quantity, setQuantity] = useState(1); // O la cantidad deseada
 
   const handleAddToCart = () => {
     const { id, name, image } = product;
-    const quantity = 1; // O la cantidad deseada
-
     const productData = {
       id,
       name: name + (selectedPrice.size ? " " + selectedPrice.size : ""), // si tiene tamaño, se le agrega al nombre
@@ -69,7 +68,7 @@ export default function ProductDetail({
       size: selectedPrice.size,
       price: selectedPrice.price,
       quantityPrice: selectedPrice.quantity,
-      quantity,
+      quantity: quantity,
       color: selectedColor.CodigoColor,
       ColorName: selectedColor.ColorName,
       detailDescription: description
@@ -87,13 +86,14 @@ export default function ProductDetail({
       <DialogTitle
         sx={{
           background: Colors.secondary,
+          mb: "55px"
         }}
       >
         <Box
           display="flex"
           alignItems="center"
           justifyContent={"space-between"}
-          sx={{height: "4rem"}}
+          sx={{ height: "4rem" }}
         >
           <Box>
             {" "}
@@ -105,59 +105,107 @@ export default function ProductDetail({
         </Box>
       </DialogTitle>
       <DialogContent>
-        <ProductDetailWrapper display={"flex"} flexDirection={matches ? "column" : "row"}>
-          <Product sx={{  width: "40vw", height: "40vw" }}>
+        <ProductDetailWrapper display={"flex"} flexDirection={matches ? "column" : "row"} justifyContent={"center"} alignItems={matches ? "center" : "normal"}>
+          <Product sx={{ border: "solid 1px lightgrey", borderRadius: "3px" , mb:3}}
+            maxWidth={matches ? "80vw" : "40vw"} maxHeight={matches ? "80vw" : "40vw"}
+            width={matches ? '100%' : '55%'}
+            height={matches ? '100%' : '55%'}
+          >
             <ProductImage src={product.image} />
           </Product>
-          <ProductDetailInfoWrapper sx={{ mr: "2vw", ml: "2vw", width:"auto" }}>
+          <ProductDetailInfoWrapper sx={{ mr: "2vw", ml: "2vw",}}
+          width={matches ? '100%' : '45%'}
+          height={matches ? '100%' : '45%'}>
 
-            <Typography sx={{ fontFamily: '"", "cursive"', fontWeight: "500", fontSize: "3.5rem" }} variant="h4">
+            <Typography sx={{ fontFamily: '"", "cursive"', fontWeight: "500", fontSize: "2.5rem" }} variant="h4">
               {product.name.charAt(0).toLocaleUpperCase()}{product.name.slice(1).toLocaleLowerCase()}
             </Typography>
-            <Typography sx={{ fontFamily: '"", "cursive"', fontWeight: "500", fontSize: "1.8rem", mb:5}} variant="h5">
-              {product.description.charAt(0).toLocaleUpperCase()}{product.description.slice(1).toLocaleLowerCase()}
+            <Divider sx={{ borderColor: "#ffc4cc", my: 2 }} />
+            <Typography sx={{ fontFamily: "Roboto,sans-serif", fontWeight: "500", fontSize: "1.25rem" }} variant="h5" alignItems="center">$
+              {selectedPrice.price}
             </Typography>
-            <Box sx={{ display: "flex", justifyContent:"space-between"}}>
-              <Box sx={{pr:2}}>
-                <Typography>Color:</Typography>
-                <Box sx={{ display: "flex", maxWidth: "75px", mb: 3 }}>
-                  <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
+
+
+            <Box sx={{ my: 2, border: "solid 1px lightgrey", borderRadius: "3px", p: 1 }}>
+              <Typography sx={{ fontFamily: "Roboto,sans-serif", fontWeight: "400", fontSize: "1.1rem" }} variant="h5">
+                Descripción
+              </Typography>
+              <Box display="flex"
+                alignItems="center" sx={{ height: "auto", px: 2, py: 3 }}>
+                {product.description}
+              </Box>
+            </Box>
+
+            <Box sx={{ display: "flex", flexDirection: "column" }}>
+              <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
+                <Box sx={{ display: "flex", mb: 3, alignItems: "center", }}>
+                  <Typography>Color:</Typography>
+                  <Box >
+                    <ColorSelect product={product} selectedColor={selectedColor} setSelectedColor={setSelectedColor} handleColorChange={handleColorChange} />
+                  </Box>
+
                 </Box>
-                <Typography>Tamaño:</Typography>
-                <Box sx={{ display: "flex", maxWidth: "75px", mb: 3 }}>
-                  <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
+                <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                  <Typography sx={{ textAlign: "center", mr: 2 }}>Tamaño:
+                  </Typography>
+                  <Box >
+                    <PriceSelect product={product} selectedPrice={selectedPrice} setSelectedPrice={setSelectedPrice} handlePriceChange={handlePriceChange} />
+                  </Box>
                 </Box>
               </Box>
-              <Box sx={{ ml:8, maxWidth: "300px"}}>
-                <TextField inputProps={{ style: { height: 50 }}} name="description"
-                  label="Nota (opcional):" onChange={(e) => setDescription(e.target.value)} />
+
+              <Box sx={{}}>
+                <TextField inputProps={{ style: { height: 50 }, maxLength: 2000 }}
+                  name="description"
+                  multiline
+                  fullWidth
+                  placeholder="Aquí puedes poner las caracteristicas que pueden poseer tus arreglos. Ej.: 2 Arreglos de rojo..."
+                  label="Nota (opcional):"
+                  onChange={(e) => setDescription(e.target.value)} />
               </Box>
             </Box>
 
 
 
-            <Box
-              sx={{ mt: 4 }}
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              {/* <IncDec /> */}
 
-              <Button variant="contained" onClick={handleAddToCart}>
-                Add to Cart
-              </Button>
+            <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3, mt: 4 }} >
+              <Box display="flex" alignItems="center" sx={{ borderRadius: "3px", width: "45%", border: "solid 1px lightgrey", }}>
+                <IconButton
+                  sx={{ width: "25%", height: '100%', background: "#f2f2f2", borderRadius: "0", }}
+                  disabled={quantity <= 1}
+                  onClick={() => setQuantity(quantity - 1)}
+                >
+                  -
+                </IconButton>
+                <Typography sx={{
+                  width: "50%", height: '100%', display: 'flex', justifyContent: "center", alignItems: "center", border: "solid 1px lightgrey", borderTop: 0,
+                  borderBottom: 0,
+                }}
+                >
+                  {quantity}
+                </Typography>
+                <IconButton
+                  sx={{ width: "25%", height: '100%', background: "#f2f2f2", borderRadius: "0", }}
+                  onClick={() => setQuantity(quantity + 1)}>
+                  +
+                </IconButton>
+              </Box>
+              <Box
+                sx={{ width: "45%" }}
+              >
+                {/* <IncDec /> */}
+
+                <Button variant="contained"
+                  fullWidth
+                  sx={{ py: 2 }}
+                  onClick={handleAddToCart}>
+                  Add to Cart
+                </Button>
+              </Box>
             </Box>
-
-            <Box
-              sx={{
-                mt: 4,
-                color: Colors.dove_gray,
-              }}
-            ></Box>
           </ProductDetailInfoWrapper>
         </ProductDetailWrapper>
       </DialogContent>
-    </Dialog>
+    </Dialog >
   );
 }

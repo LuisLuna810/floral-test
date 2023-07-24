@@ -1,11 +1,11 @@
 const { Router } = require("express");
 const router = Router();
 const { getMercado , postPagar, getOrden, getAllUserOrden, getAllOrden} = require("../../controllers/mercadoControllers/mercadoControllers")
-//const mercadopago = require('mercadopago');
+const mercadopago = require('mercadopago');
 
-/*mercadopago.configure({
+mercadopago.configure({
     access_token: 'TEST-3681466089106286-041614-9c37080cd32c6cebdecde030ae7ab93b-235741436', //acces token
-  });*/
+  });
 
 
 router.post("/webhook", getMercado)

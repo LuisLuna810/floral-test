@@ -9,7 +9,7 @@ const PriceSelect = ({ product, selectedPrice, setSelectedPrice, handlePriceChan
       <Select
         labelId="price-select-label"
         id="price-select"
-        value={selectedPrice}
+        value={product?.prices?.[0]}
         onChange={handlePriceChange}
         autoWidth
         sx={{
