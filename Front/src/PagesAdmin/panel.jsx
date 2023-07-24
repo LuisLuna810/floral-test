@@ -13,7 +13,7 @@ export function AdminNavbar() {
   };
 
   const renderNavbarMobile = () => (
-    < div style={{display:"flex", marginTop:"28px"}}>
+    < div style={{ display: "flex", marginTop: "28px" }}>
       <IconButton color="inherit" onClick={handleToggleDrawer}>
         <Menu />
       </IconButton>
@@ -57,19 +57,19 @@ export function AdminNavbar() {
             </ListItemIcon>
             <ListItemText primary="Nuevo Color" />
           </ListItem>
-          <ListItem button component={Link} to="/admin/createsnack">
+          {/*<ListItem button component={Link} to="/admin/createsnack">
             <ListItemIcon>
               <People />
             </ListItemIcon>
             <ListItemText primary="Nuevo snack" />
-          </ListItem>
+          </ListItem>*/}
           <ListItem button component={Link} to="/admin/ordenes">
             <ListItemIcon>
               <ShoppingBasket />
             </ListItemIcon>
             <ListItemText primary="Ordenes" />
           </ListItem>
-          
+
         </List>
       </Drawer>
     </div>
@@ -77,48 +77,44 @@ export function AdminNavbar() {
 
   const renderNavbarDesktop = () => (
     <>
-    <AppBar position="static" sx={{marginBottom:"0"}}>
-      <AppBarToolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Panel Administrador
-        </Typography>
-        <IconButton color="inherit">
-          <AddBox sx={{ fontSize: '1.5rem' }} />
-        </IconButton>
-        <Typography variant="subtitle1" component={Link} to="/admin/createproduct" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
-          Nuevo Producto
-        </Typography>
-        <IconButton color="inherit">
-          <Category sx={{ fontSize: '1.5rem' }} />
-        </IconButton>
-        <Typography variant="subtitle1" component={Link} to="/admin/createcategoria" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
-          Nueva Categoría
-        </Typography>
-        <IconButton color="inherit">
-          <Palette sx={{ fontSize: '1.5rem' }} />
-        </IconButton>
-        <Typography variant="subtitle1" component={Link} to="/admin/createcolor" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
-          Nuevo Color
-        </Typography>
-        <IconButton color="inherit">
-          <Fastfood sx={{ fontSize: '1.5rem' }} />
-        </IconButton>
-        
-        <Typography variant="subtitle1" component={Link} to="/admin/createsnack" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
+      <AppBar position="static" sx={{ marginBottom: "0" }}>
+        <AppBarToolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Panel Administrador
+          </Typography>
+          <IconButton color="inherit">
+            <AddBox sx={{ fontSize: '1.5rem' }} />
+          </IconButton>
+          <Typography variant="subtitle1" component={Link} to="/admin/createproduct" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
+            Nuevo Producto
+          </Typography>
+          <IconButton color="inherit">
+            <Category sx={{ fontSize: '1.5rem' }} />
+          </IconButton>
+          <Typography variant="subtitle1" component={Link} to="/admin/createcategoria" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
+            Nueva Categoría
+          </Typography>
+          <IconButton color="inherit">
+            <Palette sx={{ fontSize: '1.5rem' }} />
+          </IconButton>
+          <Typography variant="subtitle1" component={Link} to="/admin/createcolor" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
+            Nuevo Color
+          </Typography>
+          {/*<IconButton color="inherit">
+            <Fastfood sx={{ fontSize: '1.5rem' }} />
+          </IconButton>
+          <Typography variant="subtitle1" component={Link} to="/admin/createsnack" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
           Nuevo Snack
-        </Typography>
-        <IconButton color="inherit">
-          <ShoppingBasket sx={{ fontSize: '1.5rem' }} />
-        </IconButton>
-        <Typography variant="subtitle1" component={Link} to="/admin/ordenes" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
-          Ordenes
-        </Typography>
-
-        
-        
-      </AppBarToolbar>
-    </AppBar>
-<AdminNavbar2/>
+        </Typography>*/}
+          <IconButton color="inherit">
+            <ShoppingBasket sx={{ fontSize: '1.5rem' }} />
+          </IconButton>
+          <Typography variant="subtitle1" component={Link} to="/admin/ordenes" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
+            Ordenes
+          </Typography>
+        </AppBarToolbar>
+      </AppBar>
+      <AdminNavbar2 />
     </>
   );
 

@@ -12,7 +12,7 @@ export function AdminNavbar2() {
   };
 
   const renderNavbarMobile = () => (
-    < div style={{display:"flex", marginTop:"28px"}}>
+    < div style={{ display: "flex", marginTop: "28px" }}>
       <IconButton color="inherit" onClick={handleToggleDrawer}>
         <Menu />
       </IconButton>
@@ -74,38 +74,24 @@ export function AdminNavbar2() {
   );
 
   const renderNavbarDesktop = () => (
-    <AppBar position="static" sx={{marginBottom:"28px"}}>
+    <AppBar position="static" sx={{ marginBottom: "28px" }}>
       <AppBarToolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 
-        </Typography>
-        <IconButton color="inherit">
-          <AddBox sx={{ fontSize: '1.5rem' }} />
-        </IconButton>
-        <Typography variant="subtitle1" component={Link} to="/admin/deleteproduct" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
+        </Typography> 
+        <Typography variant="subtitle1" component={Link} to="/admin/deleteproduct" sx={{ cursor: 'pointer', fontSize: '0.9rem', color: 'white', textDecoration: 'none', marginRight: '15px' }}>
           Productos
         </Typography>
-
-        <IconButton color="inherit">
-          <AddBox sx={{ fontSize: '1.5rem' }} />
-        </IconButton>
-        <Typography variant="subtitle1" component={Link} to="/admin/deletecategory" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
+        <Typography variant="subtitle1" component={Link} to="/admin/deletecategory" sx={{ cursor: 'pointer', fontSize: '0.9rem', color: 'white', textDecoration: 'none', marginRight: '10px' }}>
           Categorias
         </Typography>
-
+        {/*
         <IconButton color="inherit">
           <AddBox sx={{ fontSize: '1.5rem' }} />
         </IconButton>
         <Typography variant="subtitle1" component={Link} to="/admin/deletesnack" sx={{ cursor: 'pointer', fontSize: '0.8rem', color: 'white', textDecoration: 'none', marginRight: '8px' }}>
           Snacks
-        </Typography>
-        
-       
-        
-        
-
-        
-        
+        </Typography>*/}
       </AppBarToolbar>
     </AppBar>
   );

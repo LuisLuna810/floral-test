@@ -18,11 +18,13 @@ export const Productos = () => {
               <Typography variant="h4">Nuestros Productos</Typography>
             </Box>
             <Products />
-            <Footer />
+           
             <AppDrawer />
           </UIProvider>
-        </Stack>
+        </Stack> 
+        
       </Container>
+      <Footer />
     </>
   )
 }

@@ -32,7 +32,7 @@ export const Orden = () => {
   return (
     <Box sx={{ color: "Black", display: "flex", justifyContent: "center", flexDirection: "column", width: "100%" }}>
 
-      <Box bgcolor={estadoColor} mt={2} p={1} borderRadius={0}>
+      <Box bgcolor={estadoColor} mb={2} p={2} borderRadius={0}>
         <Typography sx={{ textAlign: "center" }} variant="h5" color="white">
           Estado: {orden.estado}
         </Typography>
@@ -40,34 +40,36 @@ export const Orden = () => {
 
 
       <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Box sx={{ width: "100%", maxWidth: "900px", border: "1px solid black" }}>
+        <Box sx={{ width: "100%", maxWidth: "900px", border: "1px solid black", p: 2, mb: 2 }}>
           <Typography sx={{ textAlign: "center", border: "1px solid black", background: "rgb(230,230,230)" }} variant="h4">Detalle de la Orden</Typography>
-          <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Nombre del comprador: {orden.senderName}</Typography>
-          <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Nombre de quien recibe: {orden.receiverName}</Typography>
-          <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Tipo de orden: {orden.deliveryType}</Typography>
-          <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Direccion: {orden.address}</Typography>
-          <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Telefono: {orden.cellphone}</Typography>
-          <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Hora de envio: {orden.pickupTime}</Typography>
+          <Box p={2}>
+            <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Nombre del comprador: {orden.senderName}</Typography>
+            <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Nombre de quien recibe: {orden.receiverName}</Typography>
+            <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Tipo de orden: {orden.deliveryType}</Typography>
+            <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Direccion: {orden.address}</Typography>
+            <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Telefono: {orden.cellphone}</Typography>
+            <Typography sx={{ fontSize: "16px", fontWeight: "600" }}>Hora de envio: {orden.pickupTime}</Typography>
 
-
-
-          <Typography>Id de Compra: {orden.idCompra}</Typography>
-          <Typography>Fecha de Creación: {orden.createdAt}</Typography>
-          <Typography>Fecha de Actualización: {orden.updatedAt}</Typography>
+            <Typography>Id de Compra: {orden.idCompra}</Typography>
+            <Typography>Fecha de Creación: {orden.createdAt}</Typography>
+            <Typography>Fecha de Actualización: {orden.updatedAt}</Typography>
+          </Box>
 
           <Typography sx={{ border: "1px solid black", textAlign: "center", background: "rgb(230,230,230)" }}>DETALLES DE VENTA</Typography>
           {orden.cart?.map((product) => {
             return (
-              <Box sx={{ border: "1px solid black" }}>
+              <Box sx={{ border: "1px solid black", p: 2 }}>
                 <Typography>Nombre: {product.name} {product.quantityPrice ? "x" + product.quantityPrice : ""}</Typography>
                 <Typography>Precio por unidad: ${product.price}</Typography>
                 <Typography>Tamaño: {product.size}</Typography>
                 <Typography>Color: {product.ColorName}</Typography>
                 <Typography>Cantidad: {product.quantity}</Typography>
+                <Typography>Detalle/s: {(product.detailDescription === "") ? "(Sin detalles)" : product.detailDescription }</Typography>
               </Box>
             )
           })}
-        </Box></Box>
+        </Box>
+      </Box>
       <Footer />
     </Box>
   );

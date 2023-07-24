@@ -75,15 +75,6 @@ const PriceInput = ({ prices, onChange }) => {
   );
 };
 
-
-
-
-
-
-
-
-
-
 export const ProductForm = () => {
 
   const dispatch = useDispatch()
@@ -94,7 +85,7 @@ export const ProductForm = () => {
 
   const [product, setProduct] = useState({
     name: '',
-    price: [],
+    price: [{ quantity: null, price: '', size: null }],
     description: '',
     image: '',
     color: [],
@@ -278,6 +269,7 @@ export const ProductForm = () => {
               <Grid item xs={12}>
                 <PriceInput prices={product.price} onChange={handlePriceChange} />
               </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   required

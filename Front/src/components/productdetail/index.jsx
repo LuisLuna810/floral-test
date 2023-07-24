@@ -71,7 +71,7 @@ export default function ProductDetail({
       quantity: quantity,
       color: selectedColor.CodigoColor,
       ColorName: selectedColor.ColorName,
-      detailDescription: description
+      detailDescription: description,
     };
     dispatch(addProduct(productData));
   };

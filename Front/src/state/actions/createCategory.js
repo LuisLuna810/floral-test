@@ -37,14 +37,12 @@ export const getCategories = () => async (dispatch) => {
   try {
     let res = await axios.get(`${apiUrl}/product/getcategory`)
     dispatch(getAllCategories(res.data))
-    console.log(res,)
   } catch (error) {
     console.log(error)
   }
 }
 
 export const deleteCategory = (productId) => async (dispatch) => {
-  console.log(productId)
   try {
     let userData = JSON.parse(localStorage.getItem('userData'))
     let token = userData.user
