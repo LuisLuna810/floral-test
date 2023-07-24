@@ -19,6 +19,7 @@ import {
   updateQuantity,
 } from "../state/slices/CartSlice";
 import Footer from "../components/footer";
+import { important } from "polished";
 
 const CartItem = ({ item, onUpdateQuantity, onDelete }) => {
   const {
@@ -39,7 +40,7 @@ const CartItem = ({ item, onUpdateQuantity, onDelete }) => {
   const isMobile = useMediaQuery("(max-width:600px)");
 
   return (
-    <Grid container spacing={2} alignItems="center" sx={{pb:"100px"}}>
+    <Grid container spacing={2} alignItems="center" sx={{ pb: "100px" }}>
       <Grid item xs={12} sm={3}>
         <Box display="flex" alignItems="center">
           <img
@@ -201,15 +202,18 @@ export const Cart = () => {
         <div
           style={{
             background: Colors.light_gray,
-            width: "90%",
+            width: "80%",
             padding: "20px",
             borderRadius: "5px",
-            
           }}
         >
           <Typography
             variant="h5"
-            sx={{ display: "flex", justifyContent: "center", marginBottom:"20px", }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "20px",
+            }}
           >
             CARRITO DE COMPRA
           </Typography>
@@ -323,8 +327,7 @@ export const Cart = () => {
                   container
                   justifyContent="flex-end"
                   alignItems="center"
-                >
-                </Grid>
+                ></Grid>
                 <Grid
                   item
                   xs={12}
@@ -332,8 +335,7 @@ export const Cart = () => {
                   container
                   justifyContent="flex-end"
                   alignItems="center"
-                >
-                </Grid>
+                ></Grid>
                 <Grid
                   item
                   xs={12}
@@ -371,6 +373,8 @@ export const Cart = () => {
           )}
         </div>
       </div>
+      <Box sx={{ p:"270px" }}>
+      </Box>
       <Footer />
     </>
   );
