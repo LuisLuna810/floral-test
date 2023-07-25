@@ -406,7 +406,7 @@ export const SnackCalculator = () => {
               display: "flex",
               textAlign: "center",
               justifyContent: "center",
-              fontFamily: '"","cursive"',
+              fontFamily: '"TanPearl","cursive"',
             }}
             variant="h6"
           >
@@ -504,7 +504,7 @@ export const SnackCalculator = () => {
               display: "flex",
               textAlign: "center",
               justifyContent: "center",
-              fontFamily: '"","cursive"',
+              fontFamily: '"TanPearl","cursive"',
             }}
             variant="h6"
           >
@@ -551,7 +551,7 @@ export const SnackCalculator = () => {
               display: "flex",
               textAlign: "center",
               justifyContent: "center",
-              fontFamily: '"","cursive"',
+              fontFamily: '"TanPearl","cursive"',
               marginBottom: "28px",
               marginTop: "28px",
             }}

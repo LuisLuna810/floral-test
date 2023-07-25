@@ -33,7 +33,7 @@ export default function Banner() {
         
 
         <BannerDescription  variant="subtitle" sx={{paddingTop: "1rem", fontSize: "1.61rem", mb:5}} fontFamily={'MoonTime'}>
-        Sorprende con las flores más frescas para toda ocasión y con los mejores complementos como globos, accesorios y más. Cotiza nuestra barra de snacks y agenda tu fecha. Tenemos envíos a domicilio disponibles todos los días
+        Sorprende con las flores mas frescas para toda ocasion y con los mejores complementos como globos, accesorios y mas. Cotiza nuestra barra de snacks y agenda tu fecha. Tenemos envios a domicilio disponibles todos los dias
         </BannerDescription>
 
         <BannerShopButton onClick={handleClick} color="primary">Tienda </BannerShopButton>

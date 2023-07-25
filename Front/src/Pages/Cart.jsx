@@ -6,20 +6,17 @@ import {
   Box,
   Button,
   useMediaQuery,
-  FormControlLabel,
-  Checkbox,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Colors } from "../styles/theme";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
-  addProduct,
   removeProduct,
   updateQuantity,
 } from "../state/slices/CartSlice";
 import Footer from "../components/footer";
-import { important } from "polished";
+
 
 const CartItem = ({ item, onUpdateQuantity, onDelete }) => {
   const {
