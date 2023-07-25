@@ -39,6 +39,7 @@ import AppDrawer from './components/drawer';
 
 
 import './App.css';
+import { Terminos } from './Pages/Terminos';
 
 function App() {
 
@@ -65,6 +66,7 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/realizarpedido' element={<FormFinal decodedToken={decodedToken} />} />
           <Route path='/success' element={<Orden />} />
+          <Route path='/terminos' element={<Terminos />} />
 
           {decodedToken && decodedToken.username ?
             (<>

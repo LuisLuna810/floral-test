@@ -37,7 +37,6 @@ export const getSnacks = () => async (dispatch) => {
   try {
     let res = await axios.get(`${apiUrl}/product/getsnack`)
     dispatch(getAllSnacks(res.data))
-    console.log(res,)
   } catch (error) {
     console.log(error)
   }

@@ -16,7 +16,7 @@ export const FormFinal = ({ decodedToken }) => {
   const [cartItems, setCartItems] = useState(cart);
   const [priceTotal, setPriceTotal] = useState(0)
   const [termsAcepted, setTermsAcepted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  //const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [userCompras, setUserCompras] = useState(null)
 
@@ -55,14 +55,15 @@ export const FormFinal = ({ decodedToken }) => {
     receiverName: Yup.string().required("Campo requerido"),
     cellphone: Yup.number().required("Campo requerido").typeError("Debe ser un numero"),
     deliveryType: Yup.string().required("Campo requerido"),
-    checkTerms: Yup.boolean().oneOf([true], "Debe aceptar los terminos y condiciones"),
+    //checkTerms: Yup.boolean().oneOf([true], "Debe aceptar los terminos y condiciones"),
+
   });
 
 
   const InvitadoId = "48ad6fdc-a31a-49a3-aca1-b157755d745e"
 
   const onSubmit = (values) => {
-    setIsSubmitting(true);
+    console.log("payload");
     if (values.deliveryType === "address" && !values.address) {
 
       alert("Por favor, completa una direccion para hacer el envio.");
@@ -81,9 +82,10 @@ export const FormFinal = ({ decodedToken }) => {
         address: values.address,
         description: values.description,
         userId: decodedToken?.id ? decodedToken.id : InvitadoId,
-        
+
         totalCompras: userCompras ? userCompras : 0 // Le envio el total de compras al creador de link de mercadopago para saber si aplicar descuento o no, ya que en el 5 compra se hace descuento
       }
+
       dispatch(Pagar(payload))
     }
   };
@@ -117,6 +119,7 @@ export const FormFinal = ({ decodedToken }) => {
 
     return options;
   }
+
 
   const formik = useFormik({
     initialValues,
@@ -157,7 +160,7 @@ export const FormFinal = ({ decodedToken }) => {
 
   return (
     <Box sx={{ maxWidth: 600, margin: "auto", padding: 2 }}>
-      <Typography sx={{ fontSize: "38px" }}>Completa tus datos para recibir tu producto</Typography>
+      <Typography sx={{ fontSize: "2rem" }} fontFamily={'TanPearl'} fontSize={"2rem"}>Completa tus datos para recibir tu producto</Typography>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           id="senderName"
@@ -189,7 +192,7 @@ export const FormFinal = ({ decodedToken }) => {
           name="deliveryType"
           label="Tipo de entrega"
           value={formik.values.deliveryType}
-          onChange={handleDeliveryTypeChange} 
+          onChange={handleDeliveryTypeChange}
           fullWidth
           margin="normal"
           error={formik.touched.deliveryType && Boolean(formik.errors.deliveryType)}
@@ -249,24 +252,30 @@ export const FormFinal = ({ decodedToken }) => {
         <TextField
           id="description"
           name="description"
-          label="Descripcion"
+          label="Referencia"
           value={formik.values.description}
           onChange={formik.handleChange}
           fullWidth
           margin="normal"
-          error={formik.touched.description && Boolean(formik.errors.description)}
           helperText={formik.touched.description && formik.errors.description}
         />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={termsAcepted}
-              onChange={(e) => setTermsAcepted(e.target.checked)}
-              name="checkTerms"
-            />
-          }
-          label="Acepto los términos y condiciones"
-        />
+        <Box textAlign={"start"} display={"flex"} alignItems={"center"}>
+          <FormControlLabel
+            sx={{ mr: 0.5 }}
+            control={
+              <Checkbox
+                checked={termsAcepted}
+                onChange={(e) => setTermsAcepted(e.target.checked)}
+                name="checkTerms"
+              />
+            }
+            label="Acepto los "
+          /><a href="/terminos" target="_blank"
+            style={{ color: "inherit" , ml:0}}>
+            Terminos y Condiciones
+          </a>
+        </Box>
+
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Box sx={{ display: "flex", justifyContent: "flex-end", margin: "8px", flexDirection: "column" }}>
             <Typography sx={{ fontWeight: 400 }}>Total a pagar  <span style={{ fontWeight: 600 }}>${calculateTotal().toFixed(2)}</span></Typography>
@@ -282,7 +291,7 @@ export const FormFinal = ({ decodedToken }) => {
 
           </Box>
         </Box>
-        <Button sx={{ background: "green", fontSize: "18px", maxWidth: "800px", width: "100%", marginBottom: "36px" }} type="submit" variant="contained" color="primary" disabled={!termsAcepted || isSubmitting}>
+        <Button sx={{ background: "green", fontSize: "18px", maxWidth: "800px", width: "100%", marginBottom: "36px" }} type="submit" variant="contained" color="primary" disabled={!termsAcepted}>
           PAGAR
         </Button>
         <img
@@ -295,10 +304,3 @@ export const FormFinal = ({ decodedToken }) => {
     </Box>
   );
 };
-
-
-
-
-
-
-

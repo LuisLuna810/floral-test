@@ -15,14 +15,16 @@ export const Productos = () => {
         <Stack>
           <UIProvider>
             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-              <Typography variant="h4">Nuestros Productos</Typography>
+              <Typography variant="h4" fontFamily={'TanPearl'} fontSize={"2rem"}>NUESTROS PRODUCTOS</Typography>
             </Box>
             <Products />
             <Footer/>
             <AppDrawer />
           </UIProvider>
-        </Stack>
+        </Stack> 
+        
       </Container>
+      <Footer />
     </>
   )
 }

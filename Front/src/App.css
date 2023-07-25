@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Anaktoria';
+  src: local('Anaktoria'), url('./styles/fonts/Anaktoria.otf') format('truetype');
+}
+@font-face {
+  font-family: 'TanPearl';
+  src: local('TanPearl'), url('./styles/fonts/TAN-PEARL.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MoonTime';
+  src: local('MoonTime'), url('./styles/fonts/MoonTime-Regular.ttf') format('truetype');
+}

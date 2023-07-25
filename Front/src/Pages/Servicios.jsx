@@ -47,6 +47,9 @@ export const Servicios = () => {
   return (
     <>
       <Container>
+        <Typography variant="h3" align="center" m={4} fontFamily={'TanPearl'} fontSize={"2rem"}>
+          NUESTROS SERVICIOS
+        </Typography>
         <Grid container spacing={2}>
           {servicios.map((servicio, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -71,7 +74,7 @@ export const Servicios = () => {
                 Cotiza muy rapido en nuestra seccion de snacks, elegi la cantidad de invitados, los snacks que mas te gusten, la fecha del evento y listo !
               </Typography>
             </Typography>
-            
+
           </Grid>
           <Grid item xs={12} sm={6} md={4} key={88} sx={{ width: "100%", display: "flex", justifyItems: "center", alignItems: "center" }}>
 

@@ -6,20 +6,17 @@ import {
   Box,
   Button,
   useMediaQuery,
-  FormControlLabel,
-  Checkbox,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Colors } from "../styles/theme";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
-  addProduct,
   removeProduct,
   updateQuantity,
 } from "../state/slices/CartSlice";
 import Footer from "../components/footer";
-import { important } from "polished";
+
 
 const CartItem = ({ item, onUpdateQuantity, onDelete }) => {
   const {
@@ -134,7 +131,11 @@ export const Cart = () => {
   const [cartItems, setCartItems] = useState(cart);
   const [shippingChecked, setShippingChecked] = useState(false);
 
-  const isMobile = useMediaQuery("(max-width:600px)");
+
+
+  const isMobile = useMediaQuery('(max-width:600px)');
+
+
 
   const updateQuantitys = (productId, newQuantity, color, size, price) => {
     if (newQuantity < 1) {
@@ -209,11 +210,8 @@ export const Cart = () => {
         >
           <Typography
             variant="h5"
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              marginBottom: "20px",
-            }}
+            sx={{ display: "flex", justifyContent: "center", }}
+            fontFamily={'TanPearl'} fontSize={"2rem"} my={2}
           >
             CARRITO DE COMPRA
           </Typography>

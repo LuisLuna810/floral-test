@@ -4,7 +4,7 @@ import { darken, lighten } from "polished";
 export const DrawerWidth = 250;
 
 export const Colors = {
-  primary: "#5f2c3e",
+  primary: "#ab9047",
   secondary: "#ffc4cc",
   success: "#4CAF50",
   info: "#00a2ff",
@@ -38,6 +38,15 @@ const theme = createTheme({
     secondary: {
       main: Colors.secondary,
     },
+  },
+
+  typography: {
+    fontFamily: [
+      'sans-serif',
+      'TanPearl',
+      'Anaktoria',
+      'MoonTime',
+    ].join(','),
   },
 
   components: {

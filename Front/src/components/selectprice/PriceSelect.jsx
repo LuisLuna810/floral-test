@@ -1,21 +1,20 @@
-import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const PriceSelect = ({ product, selectedPrice, setSelectedPrice, handlePriceChange }) => {
   return (
     <FormControl fullWidth>
       <InputLabel sx={{ color: 'Black', fontWeight: "500", textAlign: "center", display: "flex", marginLeft: "50%" }} id="price-select-label">
-
+        
       </InputLabel>
       <Select
         labelId="price-select-label"
         id="price-select"
-        value={selectedPrice}
+        value={product?.prices?.[0]}
         onChange={handlePriceChange}
         autoWidth
         sx={{
           '& .MuiOutlinedInput-notchedOutline': {
-            border: 'none',
+            border: '',
           },
           width: "100%",
           maxWidth: "120px",
