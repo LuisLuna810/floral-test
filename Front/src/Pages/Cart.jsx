@@ -201,7 +201,8 @@ export const Cart = () => {
         >
           <Typography
             variant="h5"
-            sx={{ display: "flex", justifyContent: "center", marginBottom:"20px", }}
+            sx={{ display: "flex", justifyContent: "center", }}
+            fontFamily={'TanPearl'} fontSize={"2rem"} my={2}
           >
             CARRITO DE COMPRA
           </Typography>

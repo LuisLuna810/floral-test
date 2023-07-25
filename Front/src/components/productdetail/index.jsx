@@ -117,7 +117,7 @@ export default function ProductDetail({
           width={matches ? '100%' : '45%'}
           height={matches ? '100%' : '45%'}>
 
-            <Typography sx={{ fontFamily: '"", "cursive"', fontWeight: "500", fontSize: "2.5rem" }} variant="h4">
+            <Typography sx={{fontWeight: "500", fontSize: "2.5rem" }} variant="h4" fontFamily={'TanPearl'}>
               {product.name.charAt(0).toLocaleUpperCase()}{product.name.slice(1).toLocaleLowerCase()}
             </Typography>
             <Divider sx={{ borderColor: "#ffc4cc", my: 2 }} />

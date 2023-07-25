@@ -118,7 +118,7 @@ export const Account = ({ decodedToken }) => {
   return (
     <div style={{ padding: '20px' }}>
       <Box sx={{ background: Colors.light_gray, padding: '10px', borderRadius: '10px', }}>
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" gutterBottom fontFamily={'TanPearl'}>
           Hola {decodedToken?.username ? decodedToken.username : "Usuario"} - Mi cuenta
         </Typography>
 

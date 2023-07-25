@@ -15,7 +15,7 @@ export const Productos = () => {
         <Stack>
           <UIProvider>
             <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-              <Typography variant="h4">Nuestros Productos</Typography>
+              <Typography variant="h4" fontFamily={'TanPearl'}>NUESTROS PRODUCTOS</Typography>
             </Box>
             <Products />
            

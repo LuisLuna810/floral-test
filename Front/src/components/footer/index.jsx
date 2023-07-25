@@ -120,6 +120,16 @@ export default function Footer() {
               </a>
             </ListItemText>
           </List>
+
+          <FooterTitle variant="body1">
+            <a
+              href="/terminos"
+              target="_blank"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              Terminos y Condiciones
+            </a>
+          </FooterTitle>
         </Grid>
         <Grid item md={6} lg={4}>
           <FooterTitle variant="body1">newsletter</FooterTitle>

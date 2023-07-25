@@ -206,11 +206,11 @@ export const SnackCalculator = () => {
             sx={{
               marginBottom: "28px",
               marginTop: "28px",
-              fontSize: "32px",
+              fontSize: "1.8rem",
               display: "flex",
               textAlign: "center",
               justifyContent: "center",
-              fontFamily:'"","cursive"'
+              fontFamily:'"TanPearl","cursive"'
             }}
             variant="h6"
           >

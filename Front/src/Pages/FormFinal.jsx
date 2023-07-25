@@ -56,7 +56,7 @@ export const FormFinal = ({ decodedToken }) => {
     cellphone: Yup.number().required("Campo requerido").typeError("Debe ser un numero"),
     deliveryType: Yup.string().required("Campo requerido"),
     //checkTerms: Yup.boolean().oneOf([true], "Debe aceptar los terminos y condiciones"),
-    
+
   });
 
 
@@ -82,10 +82,10 @@ export const FormFinal = ({ decodedToken }) => {
         address: values.address,
         description: values.description,
         userId: decodedToken?.id ? decodedToken.id : InvitadoId,
-        
+
         totalCompras: userCompras ? userCompras : 0 // Le envio el total de compras al creador de link de mercadopago para saber si aplicar descuento o no, ya que en el 5 compra se hace descuento
       }
-      
+
       dispatch(Pagar(payload))
     }
   };
@@ -119,7 +119,7 @@ export const FormFinal = ({ decodedToken }) => {
 
     return options;
   }
- 
+
 
   const formik = useFormik({
     initialValues,
@@ -160,7 +160,7 @@ export const FormFinal = ({ decodedToken }) => {
 
   return (
     <Box sx={{ maxWidth: 600, margin: "auto", padding: 2 }}>
-      <Typography sx={{ fontSize: "38px" }}>Completa tus datos para recibir tu producto</Typography>
+      <Typography sx={{ fontSize: "2rem" }} fontFamily={'TanPearl'} fontSize={"2rem"}>Completa tus datos para recibir tu producto</Typography>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           id="senderName"
@@ -192,7 +192,7 @@ export const FormFinal = ({ decodedToken }) => {
           name="deliveryType"
           label="Tipo de entrega"
           value={formik.values.deliveryType}
-          onChange={handleDeliveryTypeChange} 
+          onChange={handleDeliveryTypeChange}
           fullWidth
           margin="normal"
           error={formik.touched.deliveryType && Boolean(formik.errors.deliveryType)}
@@ -259,16 +259,23 @@ export const FormFinal = ({ decodedToken }) => {
           margin="normal"
           helperText={formik.touched.description && formik.errors.description}
         />
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={termsAcepted}
-              onChange={(e) => setTermsAcepted(e.target.checked)}
-              name="checkTerms"
-            />
-          }
-          label="Acepto los términos y condiciones"
-        />
+        <Box textAlign={"start"} display={"flex"} alignItems={"center"}>
+          <FormControlLabel
+            sx={{ mr: 0.5 }}
+            control={
+              <Checkbox
+                checked={termsAcepted}
+                onChange={(e) => setTermsAcepted(e.target.checked)}
+                name="checkTerms"
+              />
+            }
+            label="Acepto los "
+          /><a href="/terminos" target="_blank"
+            style={{ color: "inherit" , ml:0}}>
+            Terminos y Condiciones
+          </a>
+        </Box>
+
         <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Box sx={{ display: "flex", justifyContent: "flex-end", margin: "8px", flexDirection: "column" }}>
             <Typography sx={{ fontWeight: 400 }}>Total a pagar  <span style={{ fontWeight: 600 }}>${calculateTotal().toFixed(2)}</span></Typography>
