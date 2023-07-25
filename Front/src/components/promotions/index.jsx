@@ -5,10 +5,11 @@ import { MessageText, PromotionsContainer } from "../../styles/promotions";
 import { Colors } from "../../styles/theme";
 
 const messages = [
+  "¿Preguntas? Llamanos ya al 6625130440",
   "Podes cotizar tu evento en nuestra web",
-  "Reserva la fecha que mas te convenga.",
-  "Si tenes dudas, escribinos a nuestro whatsapp! :)",
-  "¡Registrate y obtendras un -40% en tu 5ta compra!",
+  "Cotizá y agenda tu evento desde aqui",
+  "Obten nuestra tarjeta de fidelildad y gánate un 40% de descuento en tu quinta compra",
+  "Envíos a domicilio disponibles todos los días"
 ];
 export default function Promotions() {
   const containerRef = useRef();
