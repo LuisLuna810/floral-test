@@ -45,9 +45,9 @@ export const Servicios = () => {
   ];
 
   return (
-    <>
+    <div style={{background:"rgb(230,230,230)"}}>
       <Container>
-        <Typography variant="h3" align="center" m={4} fontFamily={'TanPearl'} fontSize={"2rem"}>
+        <Typography variant="h3" align="center" p={9} fontFamily={'TanPearl'} fontSize={"2rem"}>
           NUESTROS SERVICIOS
         </Typography>
         <Grid container spacing={2}>
@@ -85,7 +85,7 @@ export const Servicios = () => {
         </Grid>
       </Container>
       <Footer />
-    </>
+    </div>
   );
 };
 

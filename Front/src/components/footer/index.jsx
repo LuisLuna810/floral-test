@@ -127,7 +127,7 @@ export default function Footer() {
           <FooterTitle variant="body1">
             <a
               href="/terminos"
-              target="_blank"
+              target="_self"
               style={{ color: "inherit", textDecoration: "none" }}
             >
               Terminos y Condiciones

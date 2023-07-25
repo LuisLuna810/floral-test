@@ -7,7 +7,7 @@ import { Colors } from "../../styles/theme";
 const messages = [
   "¿Preguntas? Llamanos ya al 6625130440",
   "Podes cotizar tu evento en nuestra web",
-  "Cotizá y agenda tu evento desde aqui",
+  "Cotizá y agendá tu evento desde aquí",
   "Obten nuestra tarjeta de fidelildad y gánate un 40% de descuento en tu quinta compra",
   "Envíos a domicilio disponibles todos los días"
 ];

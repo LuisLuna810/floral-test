@@ -11,11 +11,11 @@ import AppDrawer from "../components/drawer";
 export const Productos = () => {
   return (
     <>
-      <Container disableGutters maxWidth="100%" sx={{ background: "#fff", }}>
+      <Container disableGutters maxWidth="100%" sx={{ background: "rgb(230,230,230)", }}>
         <Stack>
           <UIProvider>
-            <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-              <Typography variant="h4" fontFamily={'TanPearl'} fontSize={"2rem"}>NUESTROS PRODUCTOS</Typography>
+            <Box display="flex" justifyContent="center" sx={{ py:9 }}>
+              <Typography variant="h4" fontFamily={'TanPearl'} fontSize={"2rem"} textAlign="center">NUESTROS PRODUCTOS</Typography>
             </Box>
             <Products />
             <AppDrawer />

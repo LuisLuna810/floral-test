@@ -4,9 +4,9 @@ import Footer from "../components/footer";
 
 export const Terminos = () => {
   return (
-    <>
+    <div style={{background:"rgb(230,230,230)"}}>
       <Container my={5}>
-        <Typography variant="h3" align="center" m={5} fontFamily={'TanPearl'} fontSize={"2rem"}>
+        <Typography variant="h3" align="center" p={5} fontFamily={'TanPearl'} fontSize={"2rem"}>
           TERMINOS Y CONDICIONES
         </Typography>
         <Box my={4}>
@@ -59,6 +59,6 @@ export const Terminos = () => {
         </Box>
       </Container>
       <Footer />
-    </>
+    </div>
   )
 }

@@ -39,7 +39,7 @@ export default function AppDrawer() {
         <List>
           <ListItemButton>
             <a style={{ textDecoration: "none", color: "white" }} href="/">
-              <ListItemText>Home</ListItemText></a>
+              <ListItemText>Inicio</ListItemText></a>
           </ListItemButton>
           <MiddleDivider />
           <ListItemButton>

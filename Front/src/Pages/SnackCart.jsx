@@ -290,7 +290,8 @@ export const SnackCalculator = () => {
               display: "flex",
               textAlign: "center",
               justifyContent: "center",
-              fontFamily:'"TanPearl","cursive"'
+              fontFamily:'"TanPearl","cursive"',
+              py:5
             }}
             variant="h6"
           >
@@ -407,6 +408,7 @@ export const SnackCalculator = () => {
               textAlign: "center",
               justifyContent: "center",
               fontFamily: '"TanPearl","cursive"',
+              py:5
             }}
             variant="h6"
           >
@@ -450,8 +452,7 @@ export const SnackCalculator = () => {
             <Box>
               <CardContent
                 sx={{
-                  border: "1px solid #e0e0e0",
-                  backgroundColor: "#fff",
+                  backgroundColor: "transparent",
                   padding: "16px",
                 }}
               >
@@ -505,6 +506,7 @@ export const SnackCalculator = () => {
               textAlign: "center",
               justifyContent: "center",
               fontFamily: '"TanPearl","cursive"',
+              py:5
             }}
             variant="h6"
           >
@@ -554,6 +556,7 @@ export const SnackCalculator = () => {
               fontFamily: '"TanPearl","cursive"',
               marginBottom: "28px",
               marginTop: "28px",
+              py:5
             }}
             variant="h6"
           >
@@ -642,14 +645,14 @@ export const SnackCalculator = () => {
   };
 
   return (
-    <>
-      <Container>
+    <div style={{background:"rgb(230,230,230)"}}>
+      <Container >
         <TransitionGroup className="steps-container">
           {renderContent()}
         </TransitionGroup>
       </Container>
       <Grid sx={{ padding: "202px" }}></Grid>
       <Footer />
-    </>
+    </div>
   );
 };

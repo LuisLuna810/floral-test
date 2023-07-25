@@ -32,7 +32,7 @@ export default function AppbarDesktop({ matches }) {
           to="/"
           style={{ textDecoration: "none", maxWidth: "7rem"}}
         >
-          <ListItemText sx={{textAlign: "center"}} primary="Home" />
+          <ListItemText sx={{textAlign: "center"}} primary="Inicio" />
         </ListItemButton>
 
         <ListItemButton

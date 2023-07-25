@@ -22,7 +22,7 @@ export const BannerContent = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  maxWidth: 420,
+  maxWidth: "35rem",
   padding: "30px",
 }));
 

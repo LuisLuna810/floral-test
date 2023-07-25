@@ -24,10 +24,10 @@ export default function Banner() {
     <BannerContainer sx={{justifyContent: "space-evenly"}} >
       <BannerImage src={banner} />
       <BannerContent>
-        <BannerTitle sx={{ whiteSpace: 'nowrap', fontSize: "3.5rem"}} variant="h6" fontFamily={'TanPearl'}>
+        <BannerTitle sx={{ fontWeight:"500", whiteSpace: 'nowrap', fontSize: "3.3rem"}} variant="h6" fontFamily={'TanPearl'}>
         TODO FLORAL
         </BannerTitle>
-        <Typography sx={{ fontWeight:"500", fontSize: "2rem"}} variant="h4" fontFamily={'Anaktoria'}>
+        <Typography sx={{ fontWeight:"500", fontSize: "2.2rem"}} variant="h4" fontFamily={'Anaktoria'}>
           Regalar flores es regalar amor
         </Typography>
         
@@ -36,7 +36,7 @@ export default function Banner() {
         Sorprende con las flores mas frescas para toda ocasion y con los mejores complementos como globos, accesorios y mas. Cotiza nuestra barra de snacks y agenda tu fecha. Tenemos envios a domicilio disponibles todos los dias
         </BannerDescription>
 
-        <BannerShopButton onClick={handleClick} color="primary">Tienda </BannerShopButton>
+        <BannerShopButton onClick={handleClick} color="primary">ir a la Tienda</BannerShopButton>
       </BannerContent>
     </BannerContainer>
   );
