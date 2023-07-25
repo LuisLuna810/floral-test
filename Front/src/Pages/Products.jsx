@@ -18,7 +18,6 @@ export const Productos = () => {
               <Typography variant="h4" fontFamily={'TanPearl'} fontSize={"2rem"}>NUESTROS PRODUCTOS</Typography>
             </Box>
             <Products />
-            <Footer/>
             <AppDrawer />
           </UIProvider>
         </Stack> 
