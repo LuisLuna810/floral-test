@@ -40,7 +40,7 @@ const CartItem = ({ item, onUpdateQuantity, onDelete }) => {
   const isMobile = useMediaQuery("(max-width:600px)");
 
   return (
-    <Grid container spacing={2} alignItems="center" sx={{ pb: "100px" }}>
+    <Grid container spacing={2} alignItems="center" sx={{ pb: "35px" }}>
       <Grid item xs={12} sm={3}>
         <Box display="flex" alignItems="center">
           <img

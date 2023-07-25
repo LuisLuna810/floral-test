@@ -21,7 +21,7 @@ export default function AppbarDesktop({ matches }) {
   const { setShowSearchBox } = useUIContext();
 
   return (
-    <AppbarContainer sx={{backgroundColor: "#ffc4cc ", margin: "0", maxHeight: "100px"}}>
+    <AppbarContainer sx={{backgroundColor: "#ffc0cb ", margin: "0", maxHeight: "100px"}}>
       <Box>
         {" "}
         <img style={{ maxWidth: "100px" }} src={logo} alt="todo floral" />

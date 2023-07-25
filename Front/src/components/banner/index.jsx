@@ -33,7 +33,7 @@ export default function Banner() {
         
 
         <BannerDescription  variant="subtitle" sx={{paddingTop: "1rem"}}>
-        Arreglos florales, regalos y carrito de snacks
+        Sorprende con las flores más frescas para toda ocasión y con los mejores complementos como globos, accesorios y más. Cotiza nuestra barra de snacks y agenda tu fecha. Tenemos envíos a domicilio disponibles todos los días
         </BannerDescription>
 
         <BannerShopButton onClick={handleClick} color="primary">Tienda </BannerShopButton>
