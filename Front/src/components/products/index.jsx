@@ -121,7 +121,7 @@ export default function Products() {
           key={i}
           variant={i === currentPage ? "contained" : "outlined"}
           onClick={() => handlePageChange(i)}
-          sx={{m: "0.3rem"}}
+          sx={{ m: "0.3rem" }}
         >
           {i}
         </Button>
@@ -132,41 +132,6 @@ export default function Products() {
 
   return (
     <Container>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box sx={{ marginBottom: "16px", width: "70%" }}>
-          <TextField
-            label="Buscar producto"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            sx={{ width: "100%" }}
-          />
-        </Box>
-        <Box sx={{ marginBottom: "16px", display: "flex", flexWrap: "wrap" }}>
-          <FormControl sx={{ marginRight: "16px", width: "10rem" }}>
-            <InputLabel>Categorías</InputLabel>
-            <Select
-              labelId="category-label"
-              id="category"
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-              displayEmpty
-              label="Categorias"
-            >
-              {categories.map((category) => (
-                <MenuItem key={category.id} value={category.name}>
-                  {category.name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Box>
-      </Box>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
@@ -174,6 +139,37 @@ export default function Products() {
         sx={{ margin: `20px 4px 10px 4px`, minHeight: "600px" }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
+        <Box sx={{ display: "flex", flexDirection: "row", width: matches? "90%":"90%", justifyContent: matches? "center": "space-between"}}>
+          <Box >
+            <TextField
+              sx={{width:matches? "11rem":"43.2rem", marginRight:matches? "":"5.8rem", marginLeft:matches? "1rem":""}}
+              label="Buscar producto"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+          </Box>
+          <Box>
+            <FormControl sx={{ width:matches? "9rem":"18.7rem"}}>
+              <InputLabel >Categorías</InputLabel>
+              <Select
+                labelId="category-label"
+                id="category"
+                value={selectedCategory}
+                onChange={handleCategoryChange}
+                displayEmpty
+                label="Categorias"
+                
+              >
+                {categories.map((category) => (
+                  <MenuItem key={category.id} value={category.name}>
+                    {category.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Box>
+        </Box>
+        <Box sx={{ width: "100%" }}></Box> {/* Salto de línea */}
         {renderProducts()}
       </Grid>
 
